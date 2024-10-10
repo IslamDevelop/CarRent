@@ -2,6 +2,10 @@
     video::-webkit-media-controls {
     display: none;
   }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 }
 
 .formContainer {
@@ -51,7 +55,6 @@
     letter-spacing: 2px;
 }
 .authFormRight input {
-    position: relative;
     outline: none;
     padding: 5px 22px 5px 5px;
     letter-spacing: 1px;
@@ -64,7 +67,7 @@
     position: absolute;
     width: 17px;
     height: 17px;
-    right: 53px;
+    right: 0px;
     padding-top: 4px;
 }
 
@@ -105,6 +108,86 @@
     display: flex;
     flex-direction: column;
 }
+.formContain input {
+    outline: none;
+    padding: 5px 22px 5px 5px;
+    letter-spacing: 1px;
+    background: transparent;
+    border: inherit;
+    border-bottom: 1px solid;
+}
+.inputs {
+    position: relative;
+}
+.formContain img {
+    position: absolute;
+    right: 0;
+    width: 17px;
+    height: 17px;
+    padding-top: 5px;
+}
+
+
+
+.registrFormContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgb(19, 19, 19);
+    top: 0;
+    z-index: 3;
+}
+
+.authFormRegistr {
+    width: 900px;
+    height: 600px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #e96b0a;
+    position: relative;
+    transition: box-shadow 0.3s ease;
+}
+.authFormRegistr:hover {
+    box-shadow: 0 0 10px #e96b0a, 0 0 20px rgba(233, 107, 10, 0.5); 
+}
+
+.authFormRegistr .formContain {
+    display: flex;
+    justify-content: center;
+    height: 250px;
+    margin-right: 120px;
+}
+.authFormRegistr form button {
+    color: black;
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding: 8px;
+    background-color: #e96b0aeb;
+    transition: 0.4s ease;
+}
+.authFormRegistr form button:hover {
+    background-color: #616161;
+}
+
+.authFormRegistr p {
+    position: absolute;
+    bottom: 70px;
+    right: 180px;
+}
+.authFormRegistr a {
+    padding: 5px;
+    color: #e96b0a;
+}
+.authFormRegistr a:hover {
+    color: #616161;
+}
+
+
 @media (max-width: 710px) {
     .authForm {
         border: none;
@@ -116,6 +199,13 @@
     .authFormLeft video{
         display: none;
     }
+    .authFormRegistr {
+        box-shadow: none;
+    }
+    .authFormRegistr:hover {
+        box-shadow: none;
+    }
+    
 }
 @media (max-width: 450px) {
     .authFormRight {

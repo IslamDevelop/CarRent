@@ -5,15 +5,10 @@ import { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import { FormRegister } from './FormRegister';
 import styles from "./FormAuth.module.css"
+
 import lambaForma from '../../../assets/FormaRegistr/Orange Car.mp4'
 import user from '../../../assets/FormaRegistr/user.svg'
 import lock from '../../../assets/FormaRegistr/lock.svg'
-
-import telegram from '../../../assets/FormaRegistr/Telegram.png'
-import instagram from '../../../assets/FormaRegistr/instagram.svg'
-import facebook from '../../../assets/FormaRegistr/facebook.svg'
-import twit from '../../../assets/FormaRegistr/twitt.svg'
-
 
 interface LogForm {
   username: string;
@@ -57,13 +52,13 @@ export const FormLogin = ({authLogin}) => {
     <form className={styles.formContain} onSubmit={handleSubmit(submit)}>
       <h1>Login</h1>
 
-       <div>
+      <div className={styles.inputs}>
         <label htmlFor="username"></label>
          <input  type="text" {...register('username', {required: true})} placeholder='Email'/>
         <img src={ user } />
       </div>
 
-      <div>
+      <div className={styles.inputs}>
        <label htmlFor="password"></label>
         <input type="password" {...register('password', {required: true})}  placeholder='Password'/>
        <img src={ lock } />
@@ -72,7 +67,7 @@ export const FormLogin = ({authLogin}) => {
       <div>
        <button className={styles.btnLogin}>Login</button>
       </div>
-  </form>
+     </form>
   
      <p>
        don't have an account?
