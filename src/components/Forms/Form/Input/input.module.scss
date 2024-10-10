@@ -1,0 +1,11 @@
+.field {
+  border: 1px solid red;
+  
+
+  &_input {
+    & input {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
