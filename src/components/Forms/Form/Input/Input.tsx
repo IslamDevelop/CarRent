@@ -1,5 +1,5 @@
 import React from "react";
-import "./input.module.scss";
+import  "./input.scss";
 
 interface InputProps {
   className?: string;
@@ -25,20 +25,13 @@ const Input: React.FC<InputProps> = ({
   onChange,
 }) => {
   return (
-    <div className={`field ${value ? "active" : ""}`}>
+    // <div className={`field ${value ? "active" : ""}`}>
+    <div className="field" >
       <div className="field_label fs-14">
         {/* {placeholder} {required && <span>*</span>} */}
       </div>
 
-      {textarea ? (
-        <textarea
-          className={className}
-          name={name}
-          defaultValue={value || ""}
-          onChange={onChange}
-          required
-        />
-      ) : (
+      {
         <input
           className={className}
           name={name}
@@ -48,7 +41,7 @@ const Input: React.FC<InputProps> = ({
           required
           placeholder={placeholder}
         />
-      )}
+      }
     </div>
   );
 };
