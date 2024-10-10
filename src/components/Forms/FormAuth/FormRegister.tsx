@@ -36,19 +36,19 @@ export const FormRegister = () => {
      <form className={styles.formContain} onSubmit={handleSubmit(submit)}>
       <div className={styles.inputs}>
         <label htmlFor="login"></label>
-        <input type="text" {...register('username', {required: true})} name='login' placeholder='Email'/>
+        <input type="text" {...register('username', {required: true})}  placeholder='Email'/>
         <img src={ user } />
       </div>
 
       <div className={styles.inputs}>
         <label htmlFor="phone"></label>
-        <input type="number" {...register('phone', {required: true})} name='phone' placeholder='Phone'/>
+        <input type="number" {...register('phone', {required: true})} placeholder='Phone'/>
         <img src={ phone } />
       </div>
 
       <div className={styles.inputs}>
         <label htmlFor="pass"></label>
-        <input type="password" {...register('password', {required: true})} name='pass' placeholder='Password'/>
+        <input type="password" {...register('password', {required: true})}  placeholder='Password'/>
         <img src={ lock } />
       </div>
 
