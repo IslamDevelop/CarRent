@@ -8,22 +8,45 @@ import lambaForma from '../../../assets/FormaRegistr/Orange Car.mp4'
 import user from '../../../assets/FormaRegistr/user.svg'
 import phone from '../../../assets/FormaRegistr/phone.svg'
 import lock from '../../../assets/FormaRegistr/lock.svg'
+import { createUserWithEmailAndPassword, getAuth, signInAnonymously, SignInMethod } from 'firebase/auth';
 
 interface RegForm {
   username: string;
+  email: string;
   phone: number;
-  password: string | number
+  password: string;
+  token: string
 }
 
 export const FormRegister = () => {
   const {register, handleSubmit} = useForm<RegForm>({
    
   })
-
-  const submit: SubmitHandler<RegForm> = data => {
+  const  submit: SubmitHandler<RegForm> = async data => {
     console.log(data)
-    writeUserData(data)
-  }
+    const auth = await getAuth()
+    
+  const email = data.email
+  const password = data.password
+  await createUserWithEmailAndPassword(auth, email, password)
+  .then (({user}) => {
+    const userAuth = {
+      
+      username: data.username,
+      password: data.password,
+      phone: data.phone,
+      token: user.accessToken
+      
+    }
+   writeUserData(userAuth)
+  
+    localStorage.setItem('userAuth', JSON.stringify(userAuth))
+   })
+
+   }
+console.log(user)
+  
+  
   return (
 
   <div className={styles.registrFormContainer}>
@@ -36,10 +59,14 @@ export const FormRegister = () => {
      <form className={styles.formContain} onSubmit={handleSubmit(submit)}>
       <div className={styles.inputs}>
         <label htmlFor="login"></label>
-        <input type="text" {...register('username', {required: true})}  placeholder='Email'/>
+        <input type="text" {...register('username', {required: true})}  placeholder='Login'/>
         <img src={ user } />
       </div>
-
+      <div className={styles.inputs}>
+        <label htmlFor="login"></label>
+        <input type="text" {...register('email', {required: true})}  placeholder='Email'/>
+        <img src={ user } />
+      </div>
       <div className={styles.inputs}>
         <label htmlFor="phone"></label>
         <input type="number" {...register('phone', {required: true})} placeholder='Phone'/>
@@ -52,7 +79,7 @@ export const FormRegister = () => {
         <img src={ lock } />
       </div>
 
-      <button>Sign Up</button>
+      <button className={styles.buttonRegister} >Register</button>
      </form>
        <p>have an account <Link to='/'>Sign In</Link></p>
     </div>

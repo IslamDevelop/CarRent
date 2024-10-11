@@ -1,81 +1,117 @@
 import { Form, SubmitHandler, useForm } from 'react-hook-form';
-import writeUserData from '../../../server/FornAuthDatabase/AuthDatabase';
 import { getDatabase, onValue, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
-import { FormRegister } from './FormRegister';
-import styles from "./FormAuth.module.css"
+import { Link } from 'react-router-dom';
+import styles from "./FormAuth.module.css";
 
-import lambaForma from '../../../assets/FormaRegistr/Orange Car.mp4'
-import user from '../../../assets/FormaRegistr/user.svg'
-import lock from '../../../assets/FormaRegistr/lock.svg'
+import lambaForma from '../../../assets/FormaRegistr/Orange Car.mp4';
+import userIcon from '../../../assets/FormaRegistr/user.svg';
+import lockIcon from '../../../assets/FormaRegistr/lock.svg';
+import {  signInWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../../../firebase';
+
 
 interface LogForm {
-  username: string;
-  password: string | number
+  email: string;
+  password: string;
 }
 
-export const FormLogin = ({authLogin}) => {
-  const [users,setUsers] = useState([])
-  const [data,setData] = useState({})
-  const db = getDatabase()
-  const database = ref(db,`/authUsers/users`)
 
-  const {register, handleSubmit} = useForm<LogForm>({
-   
-  })
+interface UserAuth {
+  token: string;
+}
 
-  const submit: SubmitHandler<LogForm> = data => {
-    console.log(data)
-    onValue(database,(snapshot) => {
-      setUsers(snapshot.val())
-      setData(data)
-   
-    })
-  }
-  useEffect(() => {
-   users.map(user => {
-    user.username == data.username && user.password == data.password ? authLogin() : alert("Неверный логин или пароль")
-   })
-  },[users])
-  return (
-  <div className={styles.formContainer}>
 
-   <div className={styles.authForm}>
+interface FormLoginProps {
+  authLogin: () => void;
+}
 
-    <div className={styles.authFormLeft}>
-      <video loop muted src={ lambaForma } autoPlay controls/>
-    </div>
+export const FormLogin: React.FC<FormLoginProps> = ({ authLogin }) => {
 
-    <div className={styles.authFormRight}>
+  const [users, setUsers] = useState<UserAuth[]>([]);
+  const [data, setData] = useState<LogForm | null>(null);
 
-    <form className={styles.formContain} onSubmit={handleSubmit(submit)}>
-      <h1>Login</h1>
 
-      <div className={styles.inputs}>
-        <label htmlFor="username"></label>
-         <input  type="text" {...register('username', {required: true})} placeholder='Email'/>
-        <img src={ user } />
-      </div>
 
-      <div className={styles.inputs}>
-       <label htmlFor="password"></label>
-        <input type="password" {...register('password', {required: true})}  placeholder='Password'/>
-       <img src={ lock } />
-      </div>
+  const database = ref(db, `/authUsers/usersAuth`);
 
-      <div>
-       <button className={styles.btnLogin}>Login</button>
-      </div>
-     </form>
-  
-     <p>
-       don't have an account?
-       <Link to='/Register'> Sign Up</Link>
-     </p>
+
+  const { register, handleSubmit } = useForm<LogForm>();
+
  
+  const userAuth: UserAuth | null = JSON.parse(localStorage.getItem('userAuth') || 'null');
+
+
+  const submit: SubmitHandler<LogForm> = async (formData) => {
+  
+    console.log(formData);
+
+
+    onValue(database, (snapshot) => {
+      setUsers(snapshot.val() || []);
+      setData(formData);
+    });
+
+   
+    const email = formData.email;
+    const password = formData.password;
+    await signInWithEmailAndPassword(auth, email, password);
+  };
+
+
+  useEffect(() => {
+    onValue(database, (snapshot) => {
+      setUsers(snapshot.val() || []);
+    });
+
+  
+   console.log(auth)
+   console.log(auth.currentUser)
+   auth.currentUser !== null ? authLogin() : false
+  }, [auth.currentUser]);
+
+  return (
+    <div className={styles.formContainer}>
+      <div className={styles.authForm}>
+        <div className={styles.authFormLeft}>
+          <video loop muted src={lambaForma} autoPlay controls />
+        </div>
+
+        <div className={styles.authFormRight}>
+          <form className={styles.formContain} onSubmit={handleSubmit(submit)}>
+            <h1>Login</h1>
+
+            <div className={styles.inputs}>
+              <label htmlFor="email"></label>
+              <input
+                type="text"
+                {...register('email', { required: true })}
+                placeholder="Email"
+              />
+              <img src={userIcon} alt="User Icon" />
+            </div>
+
+            <div className={styles.inputs}>
+              <label htmlFor="password"></label>
+              <input
+                type="password"
+                {...register('password', { required: true })}
+                placeholder="Password"
+              />
+              <img src={lockIcon} alt="Lock Icon" />
+            </div>
+
+            <div>
+              <button className={styles.btnLogin}>Login</button>
+            </div>
+          </form>
+
+          <p>
+            Don't have an account?
+            <Link to='/Register'> Sign Up</Link>
+          </p>
+        </div>
+      </div>
     </div>
-   </div>
-  </div>
-  )
-}
+  );
+};
