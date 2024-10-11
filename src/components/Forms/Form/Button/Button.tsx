@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./buttom.scss"
 
 interface ButtonProps {
   type?: "button" | "submit" | "reset";

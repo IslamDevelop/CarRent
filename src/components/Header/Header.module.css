@@ -1,9 +1,9 @@
- .Header {
+.Header {
     height: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* padding-inline: 10px; */
+    padding-inline: 10px;
     background-color: rgb(255, 255, 255);
     color: white;
     font-size: 18px;
@@ -13,7 +13,6 @@
 .Header h2 {
     position: absolute;
     top: -5px;
-    /* margin-left: 160px; */
     color: #FE8400;
     font-size: 40px;
     letter-spacing: 2px;
