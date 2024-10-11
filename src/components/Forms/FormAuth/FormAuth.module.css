@@ -53,6 +53,7 @@
 .authFormRight h1 {
     text-align: center;
     letter-spacing: 2px;
+    color: white;
 }
 .authFormRight input {
     outline: none;
@@ -60,7 +61,8 @@
     letter-spacing: 1px;
     background: transparent;
     border: inherit;
-    border-bottom: 1px solid;
+    color: white;
+    border-bottom: 1px solid white;
 }
 
 .authFormRight img {
@@ -85,6 +87,7 @@
 
 .authFormRight p {
     text-align: center;
+    color: white;
 }
 .authFormRight a {
     padding: 5px;
@@ -113,8 +116,9 @@
     padding: 5px 22px 5px 5px;
     letter-spacing: 1px;
     background: transparent;
+    color: white;
     border: inherit;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid white;
 }
 .inputs {
     position: relative;
@@ -187,6 +191,11 @@
     color: #616161;
 }
 
+.formIcon ul{
+    display: flex;
+    gap: 15px;
+
+}
 
 @media (max-width: 710px) {
     .authForm {
