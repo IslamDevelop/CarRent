@@ -1,5 +1,5 @@
 import React from "react";
-import  "./input.scss";
+import styles from "./input.module.scss";
 
 interface InputProps {
   className?: string;
@@ -15,34 +15,20 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({
-  className,
-  value,
-  placeholder,
-  name,
-  required = true,
   type = "text",
-  textarea,
+  placeholder,
+  className,
   onChange,
+  value,
 }) => {
   return (
-    // <div className={`field ${value ? "active" : ""}`}>
-    <div className="field" >
-      <div className="field_label fs-14">
-        {/* {placeholder} {required && <span>*</span>} */}
-      </div>
-
-      {
-        <input
-          className={className}
-          name={name}
-          defaultValue={value || ""}
-          type={type}
-          onChange={onChange}
-          required
-          placeholder={placeholder}
-        />
-      }
-    </div>
+    <input
+      type={type}
+      placeholder={placeholder}
+      className={`${styles.input} ${className || ""}`} // Добавляем стили и дополнительные классы
+      onChange={onChange}
+      value={value}
+    />
   );
 };
 
