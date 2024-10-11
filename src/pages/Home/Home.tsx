@@ -6,9 +6,12 @@ import imgInstagram from '../../assets/HomeImage/Instagram.svg'
 import imgTwitter from '../../assets/HomeImage/Twitter.svg'
 import imgWhatsapp from '../../assets/HomeImage/WhatsApp.svg'
 import imgTelegram from '../../assets/HomeImage/Telegram.svg'
+import { getAuth } from 'firebase/auth'
 
 
 export const Home = () => {
+  const auth = getAuth()
+  console.log(auth)
   return (
     <div className={styles.homeParent}>
     <div className={styles.home}>
