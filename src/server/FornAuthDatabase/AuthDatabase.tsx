@@ -1,9 +1,10 @@
-import { get, getDatabase, ref, set } from "firebase/database";
+import { get,  ref, set } from "firebase/database";
+import { db } from "../../firebase";
 
 export default async function writeUserData(regUser) {
  
       console.log(regUser)
-      const db = getDatabase();
+     
    
       const userRef = ref(db, `/authUsers/usersAuth`);
     
@@ -15,13 +16,13 @@ export default async function writeUserData(regUser) {
        
     
         // Добавляем новое сообщение к существующим
-        const updatedMessages = [...existingUser, regUser];
+        const updatedUsers = [...existingUser, regUser];
       
         
     
        
         // Обновляем данные в базе с помощью set
-        await set(userRef, updatedMessages);
+        await set(userRef, updatedUsers);
 
     
         console.log("Пользователь зарегестрирован");

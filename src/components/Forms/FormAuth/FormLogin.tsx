@@ -1,5 +1,5 @@
 import { Form, SubmitHandler, useForm } from 'react-hook-form';
-import { getDatabase, onValue, ref } from 'firebase/database';
+import {  onValue, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from "./FormAuth.module.css";
