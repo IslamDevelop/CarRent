@@ -1,5 +1,5 @@
 import { Form, SubmitHandler, useForm } from 'react-hook-form';
-import {  onValue, ref } from 'firebase/database';
+import { getDatabase, onValue, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from "./FormAuth.module.css";
@@ -66,9 +66,8 @@ export const FormLogin: React.FC<FormLoginProps> = ({ authLogin }) => {
 
   
    console.log(auth)
-   console.log(auth.currentUser)
-   auth.currentUser !== null ? authLogin() : false
-  }, [auth.currentUser]);
+   auth.currentUser?.email !== null ? authLogin() : false
+  }, [auth]);
 
   return (
     <div className={styles.formContainer}>

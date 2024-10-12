@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./myCars.module.scss";
 
 
@@ -6,6 +6,9 @@ import location from "../../assets/MyCar/location.svg";
 import calendar from "../../assets/MyCar/calendar.svg";
 import { SubmitHandler, useForm } from "react-hook-form";
 import addCarDatabase from "../../server/addCarDatabase/addCarDatabase";
+import { addPhotoCar } from "../../server/addCarDatabase/addCarPhoto";
+import { onValue, ref } from "firebase/database";
+import { auth, db } from "../../firebase";
 
 export interface IAddCar {
   carPhoto: string;
@@ -16,20 +19,43 @@ export interface IAddCar {
 }
 
 export const MyCars: React.FC = () => {
+  const [cars,setCars] = useState([])
   const {register, handleSubmit} = useForm<IAddCar>()
   const submit: SubmitHandler<IAddCar> = async (data) => {
     try {
-      await addCarDatabase(data);
+      
+    
+      await addPhotoCar(data)
+      console.log(data.carPhoto)
+      
+
       console.log('Автомобиль добавлен успешно');
     } catch (error) {
       console.error('Ошибка при добавлении автомобиля:', error);
     }
   }
+  const carUser = auth.currentUser.uid
+  const dataBaseCars = ref(db,`/Cars/${carUser}`)
+useEffect(() => {
+  onValue(dataBaseCars, (snapshot) => {
+    setCars(snapshot.val() || [])
+  })
+},[])
+ 
   return (
 
-    <div>
+    <div className={style.contain}>
 
-      <div><img src="" alt="" /></div>
+      <div className={style.carContain}>{cars.map((item) => {
+        return (
+          <div className={style.cardCar}>
+            <img src={item.carPhoto} alt="" />
+            <p> Марка: {item.carName}</p>
+            <p>Год: {item.carYear}</p>
+            <p> Трансмиссия: {item.carTransmission}</p>
+          </div>
+        )
+      })}</div>
 
     <form onSubmit={handleSubmit(submit)}>
       <div>

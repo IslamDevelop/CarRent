@@ -1,28 +1,16 @@
 import { get,  ref, set } from "firebase/database";
-import { db } from "../../firebase";
+import { auth, db } from "../../firebase";
 
 export default async function writeUserData(regUser) {
  
       console.log(regUser)
-     
+     const authUser = auth.currentUser.uid
    
-      const userRef = ref(db, `/authUsers/usersAuth`);
+      const userRef = ref(db, `/authUsers/${authUser}`);
     
       try {
-        // Получаем существующие сообщения
-        const snapshot = await get(userRef);
-    
-        const existingUser = snapshot.val() || [];
-       
-    
-        // Добавляем новое сообщение к существующим
-        const updatedUsers = [...existingUser, regUser];
-      
-        
-    
-       
-        // Обновляем данные в базе с помощью set
-        await set(userRef, updatedUsers);
+
+        await set(userRef, regUser);
 
     
         console.log("Пользователь зарегестрирован");
