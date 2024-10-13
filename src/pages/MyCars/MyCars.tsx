@@ -11,6 +11,7 @@ import { onValue, ref } from "firebase/database";
 import { auth, db } from "../../firebase";
 
 export interface IAddCar {
+  carUid: string;
   carPhoto: string;
   carName: string;
   carYear: number;
@@ -35,7 +36,7 @@ export const MyCars: React.FC = () => {
     }
   }
   const carUser = auth.currentUser.uid
-  const dataBaseCars = ref(db,`/Cars/${carUser}`)
+  const dataBaseCars = ref(db,`/Cars`)
 useEffect(() => {
   onValue(dataBaseCars, (snapshot) => {
     setCars(snapshot.val() || [])
@@ -47,16 +48,20 @@ useEffect(() => {
     <div className={style.contain}>
 
       <div className={style.carContain}>{cars.map((item) => {
-        return (
-          <div className={style.cardCar}>
+
+    if(item.carUid == auth.currentUser.uid) {
+
+      return (
+        <div className={style.cardCar}>
             <img src={item.carPhoto} alt="" />
             <p> Марка: {item.carName}</p>
             <p>Год: {item.carYear}</p>
             <p> Трансмиссия: {item.carTransmission}</p>
           </div>
         )
+      }
       })}</div>
-
+      
     <form onSubmit={handleSubmit(submit)}>
       <div>
       <input type="file" {...register('carPhoto')}/>
