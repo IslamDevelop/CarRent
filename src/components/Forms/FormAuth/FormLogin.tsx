@@ -47,28 +47,28 @@ export const FormLogin: React.FC<FormLoginProps> = ({ authLogin }) => {
     console.log(formData);
 
 
-    onValue(database, (snapshot) => {
-      setUsers(snapshot.val() || []);
-      setData(formData);
-    });
+   
 
    
-    const email = formData.email;
-    const password = formData.password;
+    const email: string = formData.email.trim();
+    const password: string = formData.password.trim();
+    console.log(email)
+    console.log(password)
     await signInWithEmailAndPassword(auth, email, password);
   };
 
 
-  useEffect(() => {
-    onValue(database, (snapshot) => {
-      setUsers(snapshot.val() || []);
-    });
 
   
    console.log(auth)
-   auth.currentUser?.email !== null ? authLogin() : false
-  }, [auth]);
-
+   useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        authLogin();
+      }
+    });
+    return () => unsubscribe();
+  }, []);
   return (
     <div className={styles.formContainer}>
       <div className={styles.authForm}>
