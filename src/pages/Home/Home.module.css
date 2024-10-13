@@ -1,24 +1,25 @@
 .homeParent {
     width: 100%;
-    height: 87.2vh;
+    height: 85.2vh;
     background-color: white;
-    color: #fff;
 }
 
 .mainLeft {
     position: absolute;
     top: 0;
     height: 100vh;
-    width: 45%;
-    background-color: black;
+    width: 100%;
+    background-color: rgb(18, 18, 18);
 }
 
 .mainLeftIcons {
     position: absolute;
     top: 27%;
+    left: 0px;
 }
 .mainLeftIcons img {
-    height: 23px;
+    height: 25px;
+    width: 25px;
 }
 
 .mainLeftIcons ul {
@@ -57,44 +58,129 @@
     position: absolute;
     z-index: 2;
     padding: 0px 20px 20px 0px;
-    background-color: rgba(0, 0, 0, 0.227);
     border-radius: 10px;
     width: 528px;
     height: 485px;
-    left: 400px;
-    top: 200px;
+    left: 200px;
+    top: 230px;
 }
 .mainLeftSection h1 {
-    font-size: 52px;
+    color: white;
+    font-size: 46px;
     font-weight: 800;
     font-family: "Varela Round", sans-serif;
+    transform: translateX(-100vw);
+    animation: slideInTop 2s ease-out forwards;
 }
 
 .mainLeftSection p {
+    color: white;
     font-size: 24px;
     font-weight: 500;
     font-family: "Varela Round", sans-serif;
     padding: 0px 80px 30px 0px;
+    transform: translateY(-100vh);
+    animation: slideInLeft 2s ease-out forwards;
 }
 
 .mainLeftSection button {
-    width: 250px;
-    height: 59px;
+    width: 230px;
+    height: 57px;
     font-size: 21px;
     font-family: "Varela Round", sans-serif;
     letter-spacing: 1px;
     background-color: #FE8400;
     color: black;
+    transform: translateY(100vh); 
+    animation: slideInBottom 2s ease-out forwards;
 }
 .mainLeftSection button:hover {
-    background-color: white;
-    border: none;
+    transform: scale(0.91);
+    background-color: rgb(255, 255, 255);
 }
 
-.mainRight img{
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+@keyframes slideInTop {
+    from {
+        transform: translateY(-100vh);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes slideInBottom {
+    from {
+        transform: translateY(100vh);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.mainRight {
+    position: relative; 
+    margin-top: 20px;
+    margin-left: 40%;
+    width: 1080px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    transform: scaleX(0);
+    transform-origin: center; 
+    animation: expand 2s ease forwards; 
+}
+
+@keyframes expand {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.mainRight img {
     height: 690px;
-    width: 1180px;
-    border-radius: 5px;
-    position: absolute;
-    right: 0;
+    width: 100%;
+    border-radius: 25px;
+    box-shadow: 0 0 25px #FE8400;
+    cursor: pointer;
+    transition: 1s ease;
+}
+
+.mainRight img:hover {
+    transform: scale(1.009);
+}
+
+.arrowLeft, .arrowRight {
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background-color: rgba(0, 0, 0, 0.269); 
+    color: rgba(255, 255, 255, 0.399); 
+    padding: 10px; 
+    cursor: pointer; 
+    font-size: 24px; 
+    z-index: 1; 
+}
+
+.arrowLeft {
+    left: 10px; 
+}
+
+.arrowRight {
+    right: 10px; 
+}
+
+.arrowLeft:hover, .arrowRight:hover {
+    background-color: rgba(0, 0, 0, 0.485); 
 }
