@@ -1,0 +1,125 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: #f6eeec;
+}
+.profile h1 {
+  margin-bottom: 16px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  margin: 40px 0px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+}
+.info .avatar {
+  width: 120px;
+  height: 120px;
+  border: 1px solid transparent;
+  background: #fff;
+  border-radius: 50%;
+}
+.info .avatar .img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  background-position: 50%;
+  background-size: cover;
+}
+.info .settings {
+  max-width: 210px;
+}
+.info .settings .settingsLabel {
+  cursor: pointer;
+  display: flex;
+  padding: 8px 16px;
+  background-color: #fff;
+  border-radius: 6px;
+  transition: background-color 0.25s linear 0s;
+}
+.info .settings .settingsLabel img {
+  vertical-align: middle;
+}
+.info .settings .settingsLabel input {
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.info .settings .settingsLabel span {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #172335;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.personal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.personal h2 {
+  margin-bottom: 16px;
+}
+.personal .label {
+  height: 58px;
+}
+.personal .label input {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  padding-left: 16px;
+  outline: none;
+}
+.personal .label input:hover {
+  border-color: #dfe5f1 !important;
+}
+
+.settings {
+  max-width: 210px;
+}
+.settings .settingsLabel {
+  cursor: pointer;
+  display: flex;
+  padding: 8px 16px;
+  background-color: #fff;
+  border-radius: 6px;
+  transition: background-color 0.25s linear 0s;
+}
+.settings .settingsLabel img {
+  vertical-align: middle;
+}
+.settings .settingsLabel input {
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.settings .settingsLabel span {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #172335;
+  white-space: nowrap;
+  margin-left: 10px;
+}/*# sourceMappingURL=profile.module.css.map */
