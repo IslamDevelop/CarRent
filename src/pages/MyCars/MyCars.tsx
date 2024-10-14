@@ -88,8 +88,12 @@ export const MyCars: React.FC = () => {
             if (item.carUid === auth.currentUser.uid) {
               return (
                 <div className={style.cardCar} key={item.carUid}>
+                  
+                  <div>
                   <p>150$</p>
                   <img src={item.carPhoto} alt="" />
+                  </div>
+
                   <div>
                     <p>Марка: {item.carName}</p>
                     <p>Модель: {item.carModel}</p>
@@ -97,6 +101,7 @@ export const MyCars: React.FC = () => {
                     <p>Трансмиссия: {item.carTransmission}</p>
                     <button>Арендовать</button>
                   </div>
+                  
                 </div>
               );
             }
