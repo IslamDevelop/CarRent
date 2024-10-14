@@ -18,6 +18,7 @@
     letter-spacing: 2px;
     font-family: "Itim", cursive;
     z-index: 1;
+<<<<<<< HEAD
     opacity: 0; 
     transform: translateX(-200px); 
     animation: slideDown 2s forwards; 
@@ -37,4 +38,6 @@ to {
     opacity: 1;
     transform: translateX(0);
 }
+=======
+>>>>>>> f05b1e6cd33b74c489ee3886f1079e7f41a3c8e3
 }
