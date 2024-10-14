@@ -27,10 +27,13 @@ export const addPhotoCar = async (car) => {
                     reject(error);
                 },
                 async () => {
+                    const phoneUser = JSON.parse(localStorage.getItem('userAuth'))
                     
                     const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
                     car.carPhoto = downloadURL; 
                     car.carUid = auth.currentUser.uid
+                    car.carPhone = phoneUser.phone
+                    car.acceptOrder = false
                     console.log('File available at', downloadURL);
 
                    

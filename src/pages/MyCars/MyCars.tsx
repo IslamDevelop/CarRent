@@ -8,6 +8,8 @@ import addCarDatabase from "../../server/addCarDatabase/addCarDatabase";
 import { addPhotoCar } from "../../server/addCarDatabase/addCarPhoto";
 import { onValue, ref } from "firebase/database";
 import { auth, db } from "../../firebase";
+import { rent } from "../../hooks/rent";
+import { acceptOrder } from "../../hooks/acceptOrder";
 
 export interface IAddCar {
   carUid: string;
@@ -17,6 +19,8 @@ export interface IAddCar {
   carYear: number;
   carTransmission: string;
   isRented: boolean;
+  carPhone: string
+  acceptOrder: boolean
 }
 
 export const MyCars: React.FC = () => {
@@ -84,7 +88,7 @@ export const MyCars: React.FC = () => {
         </form>
 
         <div className={style.carContain}>
-          {cars.map((item) => {
+          {cars.map((item, index) => {
             if (item.carUid === auth.currentUser.uid) {
               return (
                 <div className={style.cardCar} key={item.carUid}>
@@ -94,12 +98,13 @@ export const MyCars: React.FC = () => {
                   <img src={item.carPhoto} alt="" />
                   </div>
 
-                  <div>
+                  <div className={style.cardText}>
                     <p>Марка: {item.carName}</p>
                     <p>Модель: {item.carModel}</p>
                     <p>Год: {item.carYear}</p>
                     <p>Трансмиссия: {item.carTransmission}</p>
-                    <button>Арендовать</button>
+                    {item.isRented == true ? <button onClick={() => acceptOrder(index)}> Принять арендатора</button> : false}
+                   {item.isRented == true ? <button onClick={() => rent(index)}>Отменить ордер</button> : false} 
                   </div>
                   
                 </div>
