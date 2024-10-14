@@ -8,9 +8,8 @@ interface InputProps {
   name?: string;
   type?: string;
   required?: boolean;
-  textarea?: boolean;
   onChange?: (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
 }
 
@@ -20,14 +19,16 @@ const Input: React.FC<InputProps> = ({
   className,
   onChange,
   value,
+  required = false,
 }) => {
   return (
     <input
       type={type}
       placeholder={placeholder}
-      className={`${styles.input} ${className || ""}`} // Добавляем стили и дополнительные классы
+      className={`${styles.input} ${className || ""}`}
       onChange={onChange}
       value={value}
+      required={required}
     />
   );
 };
