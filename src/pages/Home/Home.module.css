@@ -46,11 +46,30 @@
 .mainLeftIcons ul li {
     list-style: none;
     cursor: pointer;
-    transition: 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px); 
+    animation: fadeInUp 0.5s forwards; 
+    animation-delay: var(--animation-delay);
+    transition: transform 0.5s ease;
 }
+
 .mainLeftIcons ul li:hover {
-    transform: scale(1.2);
+    transform: scale(1.2); 
 }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0); 
+    }
+}
+.mainLeftIcons ul li:nth-child(1) { --animation-delay: 0.5s; }
+.mainLeftIcons ul li:nth-child(2) { --animation-delay: 0.6s; }
+.mainLeftIcons ul li:nth-child(3) { --animation-delay: 0.7s; }
+.mainLeftIcons ul li:nth-child(4) { --animation-delay: 0.8s; }
+.mainLeftIcons ul li:nth-child(5) { --animation-delay: 0.9s; }
+
+
 
 .mainLeftSection {
     display: flex;
@@ -102,29 +121,33 @@
 
 @keyframes slideInLeft {
     from {
+        opacity: 0;
         transform: translateX(-100vw);
     }
     to {
         transform: translateX(0);
+        opacity: 1;
     }
 }
 
-
 @keyframes slideInTop {
     from {
+        opacity: 0;
         transform: translateY(-100vh);
     }
     to {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 
-
 @keyframes slideInBottom {
     from {
+        opacity: 0;
         transform: translateY(100vh);
     }
     to {
+        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -139,12 +162,15 @@
     align-items: center; 
     transform: scaleX(0);
     transform-origin: center; 
-    animation: expand 2s ease forwards; 
+    animation: slideInRight 2.2s ease forwards; 
 }
 
-@keyframes expand {
-    100% {
-        transform: scaleX(1);
+@keyframes slideInRight {
+    from {
+        transform: translateX(+100vw);
+    }
+    to {
+        transform: translateX(0);
     }
 }
 
