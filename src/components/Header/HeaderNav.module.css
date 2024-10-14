@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 
 .headerRight {
-<<<<<<< HEAD
     display: flex;
     align-items: center;
     position: relative;
@@ -27,27 +27,6 @@
     transform: scale(0.972);
     background-color: white;
     border: 1px solid;
-=======
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  padding-left: 80px;
-  margin-left: 80px;
-}
-
-.headerRight button {
-  width: 146px;
-  height: 40px;
-  margin-left: 50px;
-  color: black;
-  font-size: 15px;
-  padding: 5px;
-  background-color: #fe8400;
-}
-.headerRight button:hover {
-  background-color: white;
-  border: 1px solid;
->>>>>>> f05b1e6cd33b74c489ee3886f1079e7f41a3c8e3
 }
 
 @keyframes slideDown {
@@ -59,7 +38,6 @@
 
 
 .ulNav {
-<<<<<<< HEAD
     display: flex;
     gap: 50px;
     list-style-type: none;
@@ -117,39 +95,3 @@
 .ulNav li:nth-child(4) { --animation-delay: 0.8s; }
 .ulNav li:nth-child(5) { --animation-delay: 0.9s; }
 .ulNav li:nth-child(6) { --animation-delay: 1s; }
-=======
-  display: flex;
-  gap: 35px;
-  list-style-type: none;
-}
-
-.ulNav a {
-  font-size: 18px;
-  font-family: "Itim", cursive;
-  letter-spacing: 1px;
-  color: black;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.ulNav a:hover {
-  color: black;
-}
-
-.ulNav a::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: black;
-  transition: width 0.4s ease, left 0.4s ease;
-}
-
-.ulNav a:hover::after {
-  width: 100%;
-  left: 0;
-}
->>>>>>> f05b1e6cd33b74c489ee3886f1079e7f41a3c8e3
