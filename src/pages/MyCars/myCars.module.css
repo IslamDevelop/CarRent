@@ -1,0 +1,198 @@
+.MyCars {
+  position: absolute;
+  top: 0;
+  min-height: 100vh;
+  width: 100%;
+  background-color: rgb(18, 18, 18);
+}
+
+.contain {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 100px;
+  color: #fff;
+}
+
+.formMyCars {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.formRow {
+  display: flex;
+  gap: 40px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.formRow div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.formMyCars input[type="text"],
+.formMyCars input[type="number"],
+.formMyCars select,
+.formMyCars input[type="file"] {
+  min-width: 150px;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  background-color: #2e2e2e;
+  color: white;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.formMyCars input[type="text"]:focus,
+.formMyCars input[type="number"]:focus,
+.formMyCars select:focus {
+  border-color: #ff9900;
+  background-color: #3a3a3a;
+  outline: none;
+}
+
+.formMyCars select {
+  background-color: #2e2e2e;
+  color: white;
+}
+
+.BtnFormaMyCars {
+  width: 150px;
+  padding: 12px;
+  margin-top: 36px;
+  background-color: #FE8400;
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.BtnFormaMyCars:hover {
+  background-color: #ff9d34;
+  transform: scale(1.05);
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkboxContainer input[type="checkbox"] {
+  appearance: none;
+  padding: 10px;
+  margin-top: 10px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #FE8400;
+  border-radius: 4px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.checkboxContainer input[type="checkbox"]:checked {
+  background-color: #FE8400;
+}
+
+.checkboxContainer input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkboxContainer input[type="checkbox"]:hover {
+  border-color: #ff9900;
+  background-color: #ff9d34;
+}
+
+.formMyCars input[type="file"] {
+  display: none;
+}
+
+.fileLabel {
+  padding: 12px 20px;
+  background-color: #FE8400;
+  color: black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.fileLabel:hover {
+  background-color: #ff9d34;
+  transform: scale(1.05);
+}
+
+.cardCar {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  height: 180px;
+  border-radius: 8px;
+  background-color: #313131;
+  padding: 15px;
+  box-shadow: 0px 4px 12px rgb(0, 0, 0);
+  border-left: 5px solid #FE8400;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.cardCar:hover {
+  transform: scale(1.01);
+}
+
+.cardCar img {
+  width: 240px;
+  height: 170px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.cardCar p {
+  font-size: 20px;
+  margin: 5px 0;
+  color: #fff;
+}
+
+.carContain {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .formRow {
+    flex-direction: column;
+  }
+
+  .cardCar {
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cardCar img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
