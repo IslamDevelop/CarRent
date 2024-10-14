@@ -156,9 +156,6 @@
   transition: 0.3s ease;
 }
 
-.cardCar:hover {
-  transform: scale(1.01);
-}
 
 .cardCar img {
   width: 240px;
