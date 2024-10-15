@@ -1,0 +1,13 @@
+.cardContain {
+    width: 180px;
+ border: 1px black solid;
+}
+.cardContain img {
+    width: 140px
+}
+.contain {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
