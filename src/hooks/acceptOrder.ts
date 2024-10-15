@@ -4,7 +4,7 @@ import { onValue, ref, update } from "firebase/database"
 import updatedCars from "../server/addCarDatabase/updateCars"
 import MyRentOrders from "../server/MyRentOrders/MyRentOrders"
 
-export const acceptOrder = async (index) => {
+export const acceptOrder = async (index,e) => {
     let cars = ''
     let carTarget = ''
     const dataBaseCars = ref(db,`/Cars`)
@@ -16,6 +16,6 @@ export const acceptOrder = async (index) => {
         carTarget.acceptOrder = carTarget.acceptOrder == true ? false : true;
         
     })
+    MyRentOrders(carTarget)
     updatedCars(cars)
-  MyRentOrders(carTarget)
 }

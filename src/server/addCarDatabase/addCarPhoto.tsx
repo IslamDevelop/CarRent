@@ -33,6 +33,7 @@ export const addPhotoCar = async (car) => {
                     car.carPhoto = downloadURL; 
                     car.carUid = auth.currentUser.uid
                     car.carPhone = phoneUser.phone
+                    car.isRented = false
                     car.acceptOrder = false
                     console.log('File available at', downloadURL);
 

@@ -78,10 +78,7 @@ export const MyCars: React.FC = () => {
               </select>
             </div>
 
-            <div className={style.checkboxContainer}>
-              <label htmlFor="isRented">Аренда</label>
-              <input type="checkbox" id="isRented" {...register('isRented')} />
-            </div>
+          
 
             <button className={style.BtnFormaMyCars} type="submit">Добавить</button>
           </div>
@@ -91,7 +88,7 @@ export const MyCars: React.FC = () => {
           {cars.map((item, index) => {
             if (item.carUid === auth.currentUser.uid) {
               return (
-                <div className={style.cardCar} key={item.carUid}>
+                <div className={style.cardCar} key={item.carName + Math.random()}>
                   
                   <div>
                   <p>150$</p>
@@ -103,8 +100,12 @@ export const MyCars: React.FC = () => {
                     <p>Модель: {item.carModel}</p>
                     <p>Год: {item.carYear}</p>
                     <p>Трансмиссия: {item.carTransmission}</p>
-                    {item.isRented == true ? <button onClick={() => acceptOrder(index)}> Принять арендатора</button> : false}
-                   {item.isRented == true ? <button onClick={() => rent(index)}>Отменить ордер</button> : false} 
+                    {item.isRented == true ? <button onClick={(e) => {
+                      e.stopPropagation()
+                      acceptOrder(index,e)}}> Принять арендатора</button> : false}
+                   {item.isRented == true ? <button onClick={(e) => {
+                    e.stopPropagation()
+                   rent(index,e) }}>Отменить ордер</button> : false} 
                   </div>
                   
                 </div>

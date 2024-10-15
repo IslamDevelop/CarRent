@@ -6,14 +6,14 @@ import { auth, db } from "../../firebase";
 export default async function MyRentOrders (order) {
 
  const carUid = order.carUid
-     
+     console.log(order.carUid)
      
    
-      const ordersRef = ref(db, `/Orders/${auth.currentUser.uid + carUid}`);
-      const ordersRef2 = ref(db, `/Orders/${carUid + auth.currentUser.uid}`);
+      const ordersRef = ref(db, `/Orders/${carUid}`);
+   
       try {
         await set(ordersRef, order);
-        await set(ordersRef2, order);
+
     
         console.log("Автомобиль Обновлен");
       } catch (error) {

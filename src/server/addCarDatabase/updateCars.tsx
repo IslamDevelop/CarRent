@@ -7,7 +7,7 @@ export default async function updatedCars (cars) {
 
  
      
-     
+     console.log(cars)
    
       const carsRef = ref(db, `/Cars`);
     
