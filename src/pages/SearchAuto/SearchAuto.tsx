@@ -2,7 +2,8 @@ import { onValue, ref } from 'firebase/database'
 import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase'
 
-import style from "./SearchAuto.module.css";
+import { rent } from '../../hooks/rent'
+import styles from './SearchAuto.module.css'
 
 export const SearchAuto = () => {
   const [allCars,setAllCars] = useState([])
@@ -19,10 +20,11 @@ export const SearchAuto = () => {
  
   return (
 
-    <div>{allCars.map(item => {
-   console.log(allCars)
+    <div  className={styles.contain}>{allCars.map((item,index) => {
+  
         return (
-        <div className={style.Find}>
+
+        <div key={item.carName + Math.random()} className={style.Find}>
           <div className={style.FindContainer}>
 
           <div className={style.cardCar} key={item.carUid}>
@@ -39,8 +41,9 @@ export const SearchAuto = () => {
               <p>Год: {item.carYear}</p>
               <p>Трансмиссия: {item.carTransmission}</p>
             </div>
-            <button className={style.BtnCardContain}>Арендовать</button>
+             {item.isRented == false ? <button className={style.BtnCardContain} onClick={(e) => rent(index,e)}>Арендовать</button> : <button>Арендовано</button>}
           </div>
+
         </div>
 
         </div>

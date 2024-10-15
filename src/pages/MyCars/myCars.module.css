@@ -68,7 +68,11 @@
   position: relative;
   cursor: pointer;
 }
-
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 .BtnFormaMyCars {
   width: 120px; 
   padding: 8px; 
@@ -166,6 +170,7 @@
   width: 320px; 
   border-radius: 10px;
   background-color: #1f1f1f;
+
   padding: 15px;
 }
 

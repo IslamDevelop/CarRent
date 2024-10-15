@@ -8,6 +8,8 @@ import addCarDatabase from "../../server/addCarDatabase/addCarDatabase";
 import { addPhotoCar } from "../../server/addCarDatabase/addCarPhoto";
 import { onValue, ref } from "firebase/database";
 import { auth, db } from "../../firebase";
+import { rent } from "../../hooks/rent";
+import { acceptOrder } from "../../hooks/acceptOrder";
 
 export interface IAddCar {
   carUid: string;
@@ -17,6 +19,8 @@ export interface IAddCar {
   carYear: number;
   carTransmission: string;
   isRented: boolean;
+  carPhone: string
+  acceptOrder: boolean
 }
 
 export const MyCars: React.FC = () => {
@@ -94,7 +98,12 @@ export const MyCars: React.FC = () => {
                   <p>Год: {item.carYear}</p>
                   <p>Трансмиссия: {item.carTransmission}</p>
                 </div>
-                {/* <button className={style.BtnCardContain}>Арендовать</button> */}
+               {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
+                      e.stopPropagation()
+                      acceptOrder(index,e)}}> Принять арендатора</button> : false}
+                   {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
+                    e.stopPropagation()
+                   rent(index,e) }}>Отменить ордер</button> : false} 
               </div>
             </div>
           );
