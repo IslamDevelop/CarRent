@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../../firebase'
 
 import { rent } from '../../hooks/rent'
-import styles from './SearchAuto.module.css'
+import style from './SearchAuto.module.css'
 
 export const SearchAuto = () => {
   const [allCars,setAllCars] = useState([])
@@ -16,18 +16,20 @@ export const SearchAuto = () => {
     })
   },[])
   
-
+console.log(allCars)
  
   return (
 
-    <div  className={styles.contain}>{allCars.map((item,index) => {
-  
-        return (
+    <div className={style.Find} >
+      
+      <div  className={style.FindContainer}>
+      {allCars.map((item,index) => {
+      
+      return (
+        
+        
 
-        <div key={item.carName + Math.random()} className={style.Find}>
-          <div className={style.FindContainer}>
-
-          <div className={style.cardCar} key={item.carUid}>
+          <div key={item.carName + Math.random()}  className={style.cardCar} >
           <div className={style.cardLeft}>
             <div className={style.cardHeader}>
               <p className={style.carModel}>{item.carModel}</p>
@@ -46,11 +48,11 @@ export const SearchAuto = () => {
 
         </div>
 
-        </div>
 
-      </div>
-        )
-      })
-    }</div>
+
+)
+})
+}</div>
+</div>
   )
 }

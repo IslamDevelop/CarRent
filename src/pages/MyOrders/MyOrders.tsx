@@ -11,7 +11,7 @@ const [carUid, setCarUid] = useState(uid || undefined)
 
 
   
-  const dataBaseCars = ref(db,`/Orders/${uid}${uid}`)
+  const dataBaseCars = ref(db,`/Orders/${uid}`)
   useEffect(() => {
     onValue(dataBaseCars, (snapshot) => {
       setOrders([snapshot.val() || []])

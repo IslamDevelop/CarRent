@@ -2,7 +2,6 @@
 .Find {
     position: absolute;
     top: 0;
-    height: 100vh;
     width: 100%;
     background-color: rgb(18, 18, 18);
   }

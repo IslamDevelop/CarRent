@@ -81,10 +81,10 @@ export const MyCars: React.FC = () => {
     </form>
 
     <div className={style.carContain}>
-      {cars.map((item) => {
+      {cars.map((item,index) => {
         if (item.carUid === auth.currentUser.uid) {
           return (
-            <div className={style.cardCar} key={item.carUid}>
+            <div className={style.cardCar} key={item.carName + Math.round()}>
               <div className={style.cardLeft}>
                 <div className={style.cardHeader}>
                   <p className={style.carModel}>{item.carModel}</p>
@@ -100,7 +100,7 @@ export const MyCars: React.FC = () => {
                 </div>
                {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
                       e.stopPropagation()
-                      acceptOrder(index,e)}}> Принять арендатора</button> : false}
+                      acceptOrder(index,e)}}>{item.acceptOrder == true ? "Ордер принят" : "Принять Аренду"}</button> : false}
                    {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
                     e.stopPropagation()
                    rent(index,e) }}>Отменить ордер</button> : false} 
