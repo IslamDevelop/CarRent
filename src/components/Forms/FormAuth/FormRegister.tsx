@@ -74,7 +74,7 @@ console.log(user)
       </div>
 
       <div className={styles.inputs}>
-        <label htmlFor="pass">Пароль</label>
+        <label htmlFor="pass"></label>
         <input type="password" {...register('password', {required: true})}  placeholder='Password'/>
         <img src={ lock } />
       </div>

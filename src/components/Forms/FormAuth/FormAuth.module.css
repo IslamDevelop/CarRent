@@ -26,14 +26,9 @@
     display: flex;
     align-items: center;
     border-radius: 20px;
-    box-shadow: 0 0 10px #e96b0a;
+    box-shadow: 0 0 20px #e96b0a;
     position: relative;
-    transition: box-shadow 0.3s ease;
 }
-.authForm:hover {
-    box-shadow: 0 0 10px #e96b0a, 0 0 20px rgba(233, 107, 10, 0.5); 
-}
-
 
 .authFormLeft video {
     position: absolute;
@@ -63,6 +58,9 @@
     border: inherit;
     color: white;
     border-bottom: 1px solid white;
+}
+.authFormRight input:focus {
+    border-bottom: 1px solid #e96b0a;
 }
 
 .authFormRight img {
@@ -144,6 +142,9 @@
     top: 0;
     z-index: 3;
 }
+.registrFormContainer input:focus {
+    border-bottom:1px solid #e96b0a;
+}
 
 .authFormRegistr {
     width: 900px;
@@ -189,6 +190,9 @@
 }
 .authFormRegistr a:hover {
     color: #616161;
+}
+.authFormRegistr p {
+    color: white;
 }
 
 .formIcon ul{
