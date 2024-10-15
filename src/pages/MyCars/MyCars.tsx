@@ -15,7 +15,7 @@ export interface IAddCar {
   carUid: string;
   carPhoto: string;
   carName: string;
-  carModel: string; // Добавляем carModel в интерфейс
+  carModel: string; 
   carYear: number;
   carTransmission: string;
   isRented: boolean;
@@ -45,75 +45,72 @@ export const MyCars: React.FC = () => {
 
   return (
     <div className={style.MyCars}>
-      <div className={style.contain}>
-        <form className={style.formMyCars} onSubmit={handleSubmit(submit)}>
-          <div className={style.formRow}>
-            <div>
-              <label htmlFor="carPhoto">Фото автомобиля</label>
-              <label className={style.fileLabel} htmlFor="carPhoto">Выберите файл</label>
-              <input type="file" id="carPhoto" {...register('carPhoto')} />
-            </div>
+  <div className={style.contain}>
+    <form className={style.formMyCars} onSubmit={handleSubmit(submit)}>
+      <div className={style.formRow}>
+        <div>
+          <label className={style.fileLabel} htmlFor="carPhoto">Фото автомобиля</label>
+          <input type="file" id="carPhoto" {...register('carPhoto')} />
+        </div>
+        <div>
+          <label htmlFor="carName"></label>
+          <input type="text" id="carName" placeholder="Марка автомобиля" {...register('carName', { required: true })} />
+        </div>
+        <div>
+          <label htmlFor="carModel"></label>
+          <input type="text" id="carModel" placeholder="Модель автомобиля"{...register('carModel', { required: true })} />
+        </div>
+        <div>
+          <label htmlFor="carYear"></label>
+          <input type="number" id="carYear" placeholder="Год выпуска"{...register('carYear', { required: true })} />
+        </div>
+        <div>
+          <label htmlFor="carTransmission"></label>
+          <select id="carTransmission" {...register('carTransmission')}>
+            <option value="Не известно">Коробка передач</option>
+            <option value="AT">AT</option>
+            <option value="MT">MT</option>
+          </select>
+        </div>
+        <div className={style.checkboxContainer}>
+          <label htmlFor="isRented"></label>
+          <input type="checkbox" id="isRented" {...register('isRented')} />
+        </div>
+        <button className={style.BtnFormaMyCars} type="submit">Добавить</button>
+      </div>
+    </form>
 
-            <div>
-              <label htmlFor="carName">Марка автомобиля</label>
-              <input type="text" id="carName" {...register('carName', { required: true })} />
-            </div>
-
-            <div>
-              <label htmlFor="carModel">Модель автомобиля</label> {/* Исправлено */}
-              <input type="text" id="carModel" {...register('carModel', { required: true })} />
-            </div>
-
-            <div>
-              <label htmlFor="carYear">Год выпуска</label>
-              <input type="number" id="carYear" {...register('carYear', { required: true })} />
-            </div>
-
-            <div>
-              <label htmlFor="carTransmission">Коробка передач</label>
-              <select id="carTransmission" {...register('carTransmission')}>
-                <option value="Не известно">Коробка передач</option>
-                <option value="AT">AT</option>
-                <option value="MT">MT</option>
-              </select>
-            </div>
-
-          
-
-            <button className={style.BtnFormaMyCars} type="submit">Добавить</button>
-          </div>
-        </form>
-
-        <div className={style.carContain}>
-          {cars.map((item, index) => {
-            if (item.carUid === auth.currentUser.uid) {
-              return (
-                <div className={style.cardCar} key={item.carName + Math.random()}>
-                  
-                  <div>
-                  <p>150$</p>
-                  <img src={item.carPhoto} alt="" />
-                  </div>
-
-                  <div className={style.cardText}>
-                    <p>Марка: {item.carName}</p>
-                    <p>Модель: {item.carModel}</p>
-                    <p>Год: {item.carYear}</p>
-                    <p>Трансмиссия: {item.carTransmission}</p>
-                    {item.isRented == true ? <button onClick={(e) => {
+    <div className={style.carContain}>
+      {cars.map((item) => {
+        if (item.carUid === auth.currentUser.uid) {
+          return (
+            <div className={style.cardCar} key={item.carUid}>
+              <div className={style.cardLeft}>
+                <div className={style.cardHeader}>
+                  <p className={style.carModel}>{item.carModel}</p>
+                  <p className={style.carPrice}>от 150$ в сутки</p>
+                </div>
+                <img src={item.carPhoto} alt="Car" className={style.carImage} />
+              </div>
+              <div className={style.cardRight}>
+                <div className={style.cardDetails}>
+                  <p>Марка: {item.carName}</p>
+                  <p>Год: {item.carYear}</p>
+                  <p>Трансмиссия: {item.carTransmission}</p>
+                </div>
+               {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
                       e.stopPropagation()
                       acceptOrder(index,e)}}> Принять арендатора</button> : false}
-                   {item.isRented == true ? <button onClick={(e) => {
+                   {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
                     e.stopPropagation()
                    rent(index,e) }}>Отменить ордер</button> : false} 
-                  </div>
-                  
-                </div>
-              );
-            }
-          })}
-        </div>
-      </div>
+              </div>
+            </div>
+          );
+        }
+      })}
     </div>
+  </div>
+</div>
   );
 };
