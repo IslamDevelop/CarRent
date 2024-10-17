@@ -33,6 +33,7 @@ export const FormRegister = () => {
     const userAuth = {
       
       username: data.username,
+      email: data.email,
       password: data.password,
       phone: data.phone,
       token: user.accessToken
@@ -74,14 +75,14 @@ console.log(user)
       </div>
 
       <div className={styles.inputs}>
-        <label htmlFor="pass">Пароль</label>
+        <label htmlFor="pass"></label>
         <input type="password" {...register('password', {required: true})}  placeholder='Password'/>
         <img src={ lock } />
       </div>
 
       <button className={styles.buttonRegister} >Register</button>
      </form>
-       <p>have an account <Link to='/'>Sign In</Link></p>
+       <p>have an account <Link to='/Login'>Sign In</Link></p>
     </div>
   </div>
   )

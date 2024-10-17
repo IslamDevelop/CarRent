@@ -1,73 +1,63 @@
 import React, { useState } from 'react';
 import styles from './Home.module.css';
 
-import imgMerc1 from '../../assets/HomeImage/Merc.jpg';
-import imgMerc2 from '../../assets/HomeImage/Mer2.jpg';
-import imgMerc3 from '../../assets/HomeImage/Merc3.jpg';
-import imgMerc4 from '../../assets/HomeImage/Merc4.jpg';
-
-import imgFacebook from '../../assets/HomeImage/FaceBook.svg';
-import imgInstagram from '../../assets/HomeImage/Instagram.svg';
-import imgTwitter from '../../assets/HomeImage/Twitter.svg';
-import imgWhatsapp from '../../assets/HomeImage/WhatsApp.svg';
-import imgTelegram from '../../assets/HomeImage/Telegram.svg';
-
-import { getAuth } from 'firebase/auth';
+import imgMerc1 from '../../assets/HomeImage/Merc.png';
+import imgMerc2 from '../../assets/HomeImage/Mer2.png';
+import imgMerc3 from '../../assets/HomeImage/Merc3.png';
+import imgMerc4 from '../../assets/HomeImage/Merc4.png';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
-  const auth = getAuth();
-  console.log(auth);
-
-  // State для управления сменой изображений
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Массив изображений
+  const [isAnimating, setIsAnimating] = useState(false);
+  const navigate = useNavigate()
+const rent = () => navigate('/SearchAuto')
   const images = [imgMerc3, imgMerc2, imgMerc1, imgMerc4];
+  const descriptions = [
+    {
+      title: "Mercedes AMG GT",
+      desc1: "Спортивный автомобиль с мощным двигателем.",
+      desc2: "Доступен в аренду по специальной цене.",
+    },
+    {
+      title: "Mercedes G-Class",
+      desc1: "Роскошный внедорожник с классическим дизайном.",
+      desc2: "Идеален для городских и загородных поездок.",
+    },
+    {
+      title: "Mercedes S-Class",
+      desc1: "Автомобиль представительского класса для комфортных поездок.",
+      desc2: "Лучший выбор для бизнес-поездок и дальних путешествий.",
+    },
+    {
+      title: "Mercedes EQS",
+      desc1: "Электрический седан с футуристическим дизайном.",
+      desc2: "Полностью экологичный и экономичный транспорт.",
+    },
+  ];
 
-  // Функции для переключения изображений влево и вправо
   const nextImage = () => {
-    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setTimeout(() => setIsAnimating(false), 1000);
+    }
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+      setTimeout(() => setIsAnimating(false), 1000);
+    }
   };
 
   return (
     <div className={styles.homeParent}>
       <div className={styles.home}>
         <div className={styles.mainLeft}>
-          <div className={styles.mainLeftIcons}>
-            <ul>
-              <li>
-                <a href="https://www.facebook.com/">
-                  <img src={imgFacebook} alt="FaceBook" />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/">
-                  <img src={imgInstagram} alt="Instagram" />
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com/?lang=en">
-                  <img src={imgTwitter} alt="Twitter" />
-                </a>
-              </li>
-              <li>
-                <a href="https://www.whatsapp.com/">
-                  <img src={imgWhatsapp} alt="WhatsApp" />
-                </a>
-              </li>
-              <li>
-                <a href="https://web.telegram.org/">
-                  <img src={imgTelegram} alt="Telegram" />
-                </a>
-              </li>
-            </ul>
-          </div>
           <div className={styles.mainLeftSection}>
             <h1>Enjoy your life with our comfortable cars.</h1>
             <p>Carent, is ready to serve the best experience in car rental.</p>
@@ -76,12 +66,21 @@ export const Home = () => {
         </div>
 
         <div className={styles.mainRight}>
-
           <button className={styles.arrowLeft} onClick={prevImage}>
             &lt;
           </button>
 
-          <img src={images[currentImageIndex]} alt="Mercedes" />
+          <div className={styles.imageContainer}>
+            <div className={styles.imageBlurBackground}></div>
+            <img src={images[currentImageIndex]} alt="Mercedes" className={styles.image} />
+          </div>
+
+          <div className={styles.textOverlay}>
+            <h2>{descriptions[currentImageIndex].title}</h2>
+            <p>{descriptions[currentImageIndex].desc1}</p>
+            <p>{descriptions[currentImageIndex].desc2}</p>
+            <button onClick={() => rent()} className={styles.rentButton}>Взять в аренду</button>
+          </div>
 
           <button className={styles.arrowRight} onClick={nextImage}>
             &gt;
