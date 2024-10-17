@@ -1,7 +1,7 @@
 import { Form, SubmitHandler, useForm } from 'react-hook-form';
 import { getDatabase, onValue, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from "./FormAuth.module.css";
 
 import lambaForma from '../../../assets/FormaRegistr/Orange Car.mp4';
@@ -22,17 +22,15 @@ interface UserAuth {
 }
 
 
-interface FormLoginProps {
-  authLogin: () => void;
-}
 
-export const FormLogin: React.FC<FormLoginProps> = ({ authLogin }) => {
+
+export const FormLogin = () => {
 
   const [users, setUsers] = useState<UserAuth[]>([]);
   const [data, setData] = useState<LogForm | null>(null);
 
 
-
+  const navigate = useNavigate()
   const database = ref(db, `/authUsers/usersAuth`);
 
 
@@ -41,7 +39,9 @@ export const FormLogin: React.FC<FormLoginProps> = ({ authLogin }) => {
  
   const userAuth: UserAuth | null = JSON.parse(localStorage.getItem('userAuth') || 'null');
 
-
+  
+ 
+ 
   const submit: SubmitHandler<LogForm> = async (formData) => {
   
     console.log(formData);
@@ -55,20 +55,24 @@ export const FormLogin: React.FC<FormLoginProps> = ({ authLogin }) => {
     console.log(email)
     console.log(password)
     await signInWithEmailAndPassword(auth, email, password);
+    
   };
 
+ 
 
-
-  
-   console.log(auth)
-   useEffect(() => {
+  useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        authLogin();
+        navigate('/')
       }
     });
     return () => unsubscribe();
   }, []);
+
+
+  
+   console.log(auth)
+   console.log(userAuth)
   return (
     <div className={styles.formContainer}>
       <div className={styles.authForm}>

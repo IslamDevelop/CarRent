@@ -11,12 +11,14 @@ import { auth, db } from "../../firebase";
 import { rent } from "../../hooks/rent";
 import { acceptOrder } from "../../hooks/acceptOrder";
 
+
 export interface IAddCar {
   carUid: string;
   carPhoto: string;
   carName: string;
   carModel: string; 
   carYear: number;
+  rentPrice: number;
   carTransmission: string;
   isRented: boolean;
   carPhone: string
@@ -72,9 +74,9 @@ export const MyCars: React.FC = () => {
             <option value="MT">MT</option>
           </select>
         </div>
-        <div className={style.checkboxContainer}>
-          <label htmlFor="isRented"></label>
-          <input type="checkbox" id="isRented" {...register('isRented')} />
+        <div>
+          <label htmlFor="rentPrice"></label>
+          <input type="number" id="rentPrice" placeholder="Цена в сутки"{...register('rentPrice', { required: true })} />
         </div>
         <button className={style.BtnFormaMyCars} type="submit">Добавить</button>
       </div>

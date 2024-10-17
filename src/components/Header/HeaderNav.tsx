@@ -1,6 +1,23 @@
 import { Link } from "react-router-dom";
 import styles from "./HeaderNav.module.css";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../firebase";
+import { useEffect, useState } from "react";
 export const HeaderNav = () => {
+  const [isauth, setAuth] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuth(true);
+      } else {
+        setAuth(false)
+      }
+    });
+    return () => unsubscribe();
+  }, []);
+
+
   return (
     <div>
       <div className={styles.headerRight}>
@@ -25,8 +42,8 @@ export const HeaderNav = () => {
           </li>
         </ul>
         <div>
-          <Link to="/">
-            <button>Login | Sign up</button>
+          <Link to="/Login">
+           {!isauth ?  <button>Вход|Регистрация</button> : <button onClick={() => signOut(auth)}>Выход</button>} 
           </Link>
         </div>
       </div>
