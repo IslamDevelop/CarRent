@@ -1,13 +1,15 @@
 import { onValue, ref } from 'firebase/database'
 import React, { useEffect, useState } from 'react'
-import { db } from '../../firebase'
+import { auth, db } from '../../firebase'
 
 import { rent } from '../../hooks/rent'
 import style from './SearchAuto.module.css'
+import { useNavigate } from 'react-router-dom'
 
 export const SearchAuto = () => {
   const [allCars,setAllCars] = useState([])
   const [vsCars,setVsCars] = useState([])
+  const [isauth, setAuth] = useState(false);
   const dataBaseCars = ref(db,`/Cars`)
   useEffect(() => {
     onValue(dataBaseCars, (snapshot) => {
@@ -15,6 +17,20 @@ export const SearchAuto = () => {
      
     })
   },[])
+
+const navigate = useNavigate()
+const redirectLogin = () => navigate('/Login')
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuth(true);
+      } else {
+        setAuth(false)
+      }
+    });
+    return () => unsubscribe();
+  }, []);
   
 console.log(allCars)
  
@@ -42,8 +58,8 @@ console.log(allCars)
               <p>Марка: {item.carName}</p>
               <p>Год: {item.carYear}</p>
               <p>Трансмиссия: {item.carTransmission}</p>
-            </div>
-             {item.isRented == false ? <button className={style.BtnCardContain} onClick={(e) => rent(index,e)}>Арендовать</button> : <button>Арендовано</button>}
+            </div>{isauth ? item.isRented == false ? <button className={style.BtnCardContain} onClick={(e) => rent(index,e)}>Арендовать</button> : <button>Арендовано</button> : <button onClick={() => redirectLogin()}>Арендовать</button>  }
+             
           </div>
 
         </div>

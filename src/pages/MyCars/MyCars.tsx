@@ -28,6 +28,7 @@ export interface IAddCar {
 export const MyCars: React.FC = () => {
   const [cars, setCars] = useState([]);
   const { register, handleSubmit } = useForm<IAddCar>();
+  const [isauth, setAuth] = useState(false);
   const submit: SubmitHandler<IAddCar> = async (data) => {
     try {
       await addPhotoCar(data);
@@ -37,17 +38,29 @@ export const MyCars: React.FC = () => {
       console.error('Ошибка при добавлении автомобиля:', error);
     }
   };
-  const carUser = auth.currentUser.uid;
+  
   const dataBaseCars = ref(db, `/Cars`);
   useEffect(() => {
     onValue(dataBaseCars, (snapshot) => {
       setCars(snapshot.val() || []);
     });
   }, []);
-
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setAuth(true);
+      } else {
+        setAuth(false)
+      }
+    });
+    return () => unsubscribe();
+  }, []);
   return (
     <div className={style.MyCars}>
   <div className={style.contain}>
+      {!isauth ? <h2>Тут может быть ТВОЯ МАШЫЫНА</h2> : 
+      <div>
+
     <form className={style.formMyCars} onSubmit={handleSubmit(submit)}>
       <div className={style.formRow}>
         <div>
@@ -105,13 +118,15 @@ export const MyCars: React.FC = () => {
                       acceptOrder(index,e)}}>{item.acceptOrder == true ? "Ордер принят" : "Принять Аренду"}</button> : false}
                    {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
                     e.stopPropagation()
-                   rent(index,e) }}>Отменить ордер</button> : false} 
+                    rent(index,e) }}>Отменить ордер</button> : false} 
               </div>
             </div>
           );
         }
       })}
     </div>
+      </div>
+    }
   </div>
 </div>
   );

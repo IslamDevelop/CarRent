@@ -5,11 +5,13 @@ import imgMerc1 from '../../assets/HomeImage/Merc.png';
 import imgMerc2 from '../../assets/HomeImage/Mer2.png';
 import imgMerc3 from '../../assets/HomeImage/Merc3.png';
 import imgMerc4 from '../../assets/HomeImage/Merc4.png';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-
+  const navigate = useNavigate()
+const rent = () => navigate('/SearchAuto')
   const images = [imgMerc3, imgMerc2, imgMerc1, imgMerc4];
   const descriptions = [
     {
@@ -77,7 +79,7 @@ export const Home = () => {
             <h2>{descriptions[currentImageIndex].title}</h2>
             <p>{descriptions[currentImageIndex].desc1}</p>
             <p>{descriptions[currentImageIndex].desc2}</p>
-            <button className={styles.rentButton}>Взять в аренду</button>
+            <button onClick={() => rent()} className={styles.rentButton}>Взять в аренду</button>
           </div>
 
           <button className={styles.arrowRight} onClick={nextImage}>
