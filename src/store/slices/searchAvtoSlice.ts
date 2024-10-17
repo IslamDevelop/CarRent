@@ -7,7 +7,8 @@ interface Car {
     carPhoto: string;
     carYear: number;
     carTransmission: string;
-    id:number
+    id:number;
+    isRented:boolean
   }
   
   interface SearchCarState {
