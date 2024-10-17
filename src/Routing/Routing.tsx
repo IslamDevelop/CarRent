@@ -7,6 +7,7 @@ import { MyOrders } from '../pages/MyOrders/MyOrders'
 import { AboutUs } from '../pages/AboutUs/AboutUs'
 import { Home } from '../pages/Home/Home'
 import { FormLogin } from '../components/Forms/FormAuth/FormLogin'
+import { FormRegister } from '../components/Forms/FormAuth/FormRegister'
 
 export const Routing = () => {
  
@@ -19,6 +20,7 @@ export const Routing = () => {
         <Route path='/MyOrders' element={<MyOrders/>}/>
         <Route path='/AboutUs' element={<AboutUs/>}/>
         <Route path='/Login' element={<FormLogin/>}/>
+        <Route path='/Register' element={<FormRegister/>}/>
     </Routes>
   )
 }
