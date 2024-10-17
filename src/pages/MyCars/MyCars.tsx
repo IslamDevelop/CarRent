@@ -33,9 +33,9 @@ export const MyCars: React.FC = () => {
     try {
       await addPhotoCar(data);
       console.log(data.carPhoto);
-      console.log('Автомобиль добавлен успешно');
+      console.log("Автомобиль добавлен успешно");
     } catch (error) {
-      console.error('Ошибка при добавлении автомобиля:', error);
+      console.error("Ошибка при добавлении автомобиля:", error);
     }
   };
   
