@@ -29,6 +29,7 @@
   align-items: center;
   text-align: start;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .formRow div {
