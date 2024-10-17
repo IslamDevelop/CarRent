@@ -26,9 +26,9 @@ export const MyCars: React.FC = () => {
     try {
       await addPhotoCar(data);
       console.log(data.carPhoto);
-      console.log('Автомобиль добавлен успешно');
+      console.log("Автомобиль добавлен успешно");
     } catch (error) {
-      console.error('Ошибка при добавлении автомобиля:', error);
+      console.error("Ошибка при добавлении автомобиля:", error);
     }
   };
   const carUser = auth.currentUser.uid;
@@ -46,28 +46,43 @@ export const MyCars: React.FC = () => {
           <div className={style.formRow}>
             <div>
               <label htmlFor="carPhoto">Фото автомобиля</label>
-              <label className={style.fileLabel} htmlFor="carPhoto">Выберите файл</label>
-              <input type="file" id="carPhoto" {...register('carPhoto')} />
+              <label className={style.fileLabel} htmlFor="carPhoto">
+                Выберите файл
+              </label>
+              <input type="file" id="carPhoto" {...register("carPhoto")} />
             </div>
 
             <div>
               <label htmlFor="carName">Марка автомобиля</label>
-              <input type="text" id="carName" {...register('carName', { required: true })} />
+              <input
+                type="text"
+                id="carName"
+                {...register("carName", { required: true })}
+              />
             </div>
 
             <div>
-              <label htmlFor="carModel">Модель автомобиля</label> {/* Исправлено */}
-              <input type="text" id="carModel" {...register('carModel', { required: true })} />
+              <label htmlFor="carModel">Модель автомобиля</label>{" "}
+              {/* Исправлено */}
+              <input
+                type="text"
+                id="carModel"
+                {...register("carModel", { required: true })}
+              />
             </div>
 
             <div>
               <label htmlFor="carYear">Год выпуска</label>
-              <input type="number" id="carYear" {...register('carYear', { required: true })} />
+              <input
+                type="number"
+                id="carYear"
+                {...register("carYear", { required: true })}
+              />
             </div>
 
             <div>
               <label htmlFor="carTransmission">Коробка передач</label>
-              <select id="carTransmission" {...register('carTransmission')}>
+              <select id="carTransmission" {...register("carTransmission")}>
                 <option value="Не известно">Коробка передач</option>
                 <option value="AT">AT</option>
                 <option value="MT">MT</option>
@@ -76,10 +91,12 @@ export const MyCars: React.FC = () => {
 
             <div className={style.checkboxContainer}>
               <label htmlFor="isRented">Аренда</label>
-              <input type="checkbox" id="isRented" {...register('isRented')} />
+              <input type="checkbox" id="isRented" {...register("isRented")} />
             </div>
 
-            <button className={style.BtnFormaMyCars} type="submit">Добавить</button>
+            <button className={style.BtnFormaMyCars} type="submit">
+              Добавить
+            </button>
           </div>
         </form>
 
@@ -88,10 +105,9 @@ export const MyCars: React.FC = () => {
             if (item.carUid === auth.currentUser.uid) {
               return (
                 <div className={style.cardCar} key={item.carUid}>
-                  
                   <div>
-                  <p>150$</p>
-                  <img src={item.carPhoto} alt="" />
+                    <p>150$</p>
+                    <img src={item.carPhoto} alt="" />
                   </div>
 
                   <div>
@@ -101,7 +117,6 @@ export const MyCars: React.FC = () => {
                     <p>Трансмиссия: {item.carTransmission}</p>
                     <button>Арендовать</button>
                   </div>
-                  
                 </div>
               );
             }
