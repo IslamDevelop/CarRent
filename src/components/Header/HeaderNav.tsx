@@ -23,22 +23,22 @@ export const HeaderNav = () => {
       <div className={styles.headerRight}>
         <ul className={styles.ulNav}>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Домой</Link>
           </li>
           <li>
-            <Link to="/Profile">Profile</Link>
+            <Link to="/Profile">Профиль</Link>
           </li>
           <li>
-            <Link to="/SearchAuto">Find</Link>
+            <Link to="/SearchAuto">Все автомобили</Link>
           </li>
           <li>
-            <Link to="/MyCars">Cars</Link>
+            <Link to="/MyCars">Мои авто</Link>
           </li>
           <li>
-            <Link to="/MyOrders">Orders</Link>
+            <Link to="/MyOrders">Аренда</Link>
           </li>
           <li>
-            <Link to="/AboutUs">About</Link>
+            <Link to="/AboutUs">О нас</Link>
           </li>
         </ul>
         <div>
