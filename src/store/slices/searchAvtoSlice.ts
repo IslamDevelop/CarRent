@@ -9,6 +9,7 @@ interface Car {
     carTransmission: string;
     id:number;
     isRented:boolean
+    rentPrice: number
   }
   
   interface SearchCarState {

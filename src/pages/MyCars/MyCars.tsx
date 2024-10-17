@@ -29,7 +29,7 @@ interface Icar {
 }
 
 export const MyCars: React.FC = () => {
-  const [cars, setCars] = useState<Icar>();
+  const [cars, setCars] = useState<Icar | []>([]);
   const { register, handleSubmit } = useForm<IAddCar>();
   const [isauth, setAuth] = useState(false);
   const submit: SubmitHandler<IAddCar> = async (data) => {
@@ -102,17 +102,17 @@ export const MyCars: React.FC = () => {
       {cars.map((item,index) => {
         if (item.carUid === auth.currentUser.uid) {
           return (
-            <div className={style.cardCar} key={item.carName + Math.round()}>
+            <div className={style.cardCar} key={item.carName + Math.random()}>
               <div className={style.cardLeft}>
                 <div className={style.cardHeader}>
-                  <p className={style.carModel}>{item.carModel}</p>
-                  <p className={style.carPrice}>от 150$ в сутки</p>
+                  <p className={style.carModel}>{item.carName} {item.carModel}</p>
+                  <p className={style.carPrice}>{item.rentPrice}р в сутки</p>
                 </div>
                 <img src={item.carPhoto} alt="Car" className={style.carImage} />
               </div>
               <div className={style.cardRight}>
                 <div className={style.cardDetails}>
-                  <p>Марка: {item.carName}</p>
+                 
                   <p>Год: {item.carYear}</p>
                   <p>Трансмиссия: {item.carTransmission}</p>
                 </div>

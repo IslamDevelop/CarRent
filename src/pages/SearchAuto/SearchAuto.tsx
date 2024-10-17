@@ -65,7 +65,7 @@ export const SearchAuto = () => {
               <div className={style.cardLeft}>
                 <div className={style.cardHeader}>
                   <p className={style.carModel}>{item.carModel}</p>
-                  <p className={style.carPrice}>от 150$ в сутки</p>
+                  <p className={style.carPrice}>{item.rentPrice}р в сутки</p>
                 </div>
                 <img src={item.carPhoto} alt="Car" className={style.carImage} />
               </div>
