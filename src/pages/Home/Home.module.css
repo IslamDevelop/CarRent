@@ -1,212 +1,169 @@
-.homeParent {
-    width: 100%;
-    height: 85.2vh;
-    background-color: white;
-}
-
 .mainLeft {
     position: absolute;
     top: 0;
     height: 100vh;
     width: 100%;
-    background-color: rgb(18, 18, 18);
-}
-
-.mainLeftIcons {
-    position: absolute;
-    top: 27%;
-    left: 0px;
-}
-.mainLeftIcons img {
-    height: 25px;
-    width: 25px;
-}
-
-.mainLeftIcons ul {
+    background-color: rgb(24, 24, 24);
+    background-image: linear-gradient(135deg, rgb(16, 16, 16) 25%, transparent 25%, transparent 75%,rgb(16, 16, 16) 75%);
+  }
+  
+  .mainLeftSection {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-}
-.mainLeftIcons ul::before {
-    content: '';
-    height: 80px;
-    width: 3px;
-    display: block;
-    margin: auto;
-    background-color: #FE8400;
-}
-.mainLeftIcons ul::after {
-    content: '';
-    height: 80px;
-    width: 3px;
-    display: block;
-    margin: auto;
-    background-color: #FE8400;
-}
-.mainLeftIcons ul li {
-    list-style: none;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px); 
-    animation: fadeInUp 0.5s forwards; 
-    animation-delay: var(--animation-delay);
-    transition: transform 0.5s ease;
-}
-
-.mainLeftIcons ul li:hover {
-    transform: scale(1.2); 
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0); 
-    }
-}
-.mainLeftIcons ul li:nth-child(1) { --animation-delay: 0.5s; }
-.mainLeftIcons ul li:nth-child(2) { --animation-delay: 0.6s; }
-.mainLeftIcons ul li:nth-child(3) { --animation-delay: 0.7s; }
-.mainLeftIcons ul li:nth-child(4) { --animation-delay: 0.8s; }
-.mainLeftIcons ul li:nth-child(5) { --animation-delay: 0.9s; }
-
-
-
-.mainLeftSection {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
     z-index: 2;
-    padding: 0px 20px 20px 0px;
-    border-radius: 10px;
-    width: 528px;
-    height: 485px;
+    padding: 20px;
+    width: 450px;
+    height: 400px;
     left: 200px;
     top: 230px;
-}
-.mainLeftSection h1 {
-    color: white;
+    position: absolute;
+  }
+  
+  .mainLeftSection h1,
+  .mainLeftSection p {
+    color: rgb(220, 220, 220);
+    font-family: "Varela Round", sans-serif;
+  }
+  
+  .mainLeftSection h1 {
     font-size: 46px;
     font-weight: 800;
-    font-family: "Varela Round", sans-serif;
-    transform: translateX(-100vw);
     animation: slideInTop 2s ease-out forwards;
-}
-
-.mainLeftSection p {
-    color: white;
+  }
+  
+  .mainLeftSection p {
     font-size: 24px;
     font-weight: 500;
-    font-family: "Varela Round", sans-serif;
     padding: 0px 80px 30px 0px;
-    transform: translateY(-100vh);
     animation: slideInLeft 2s ease-out forwards;
-}
-
-.mainLeftSection button {
+  }
+  
+  .mainLeftSection button {
     width: 230px;
     height: 57px;
     font-size: 21px;
-    font-family: "Varela Round", sans-serif;
-    letter-spacing: 1px;
     background-color: #FE8400;
     color: black;
-    transform: translateY(100vh); 
-    animation: slideInBottom 2s ease-out forwards;
-}
-.mainLeftSection button:hover {
-    transform: scale(0.91);
-    background-color: rgb(255, 255, 255);
-}
-
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-100vw);
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInTop {
-    from {
-        opacity: 0;
-        transform: translateY(-100vh);
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideInBottom {
-    from {
-        opacity: 0;
-        transform: translateY(100vh);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.mainRight {
-    position: relative; 
-    margin-top: 20px;
-    margin-left: 40%;
-    width: 1080px; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    transform: scaleX(0);
-    transform-origin: center; 
-    animation: slideInRight 2.2s ease forwards; 
-}
-
-@keyframes slideInRight {
-    from {
-        transform: translateX(+100vw);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-.mainRight img {
-    height: 690px;
-    width: 100%;
-    border-radius: 25px;
-    box-shadow: 0 0 25px #FE8400;
     cursor: pointer;
-    transition: 1s ease;
-}
-
-.mainRight img:hover {
-    transform: scale(1.009);
-}
-
-.arrowLeft, .arrowRight {
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    background-color: rgba(0, 0, 0, 0.269); 
-    color: rgba(255, 255, 255, 0.399); 
+    animation: slideInBottom 2s ease-out forwards;
+  }
+  
+  .mainRight {
+    position: relative;
+    width: 1080px;
+    height: 600px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40%;
+    animation: slideInRight 2.2s ease forwards;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(+100vw);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .imageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  
+  .image {
+    height: 550px;
+    width: 100%;
+    transition: transform 0.8s ease;
+    cursor: pointer;
+  }
+  
+  .imageBlurBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/HomeImage/blurred-background.jpg');
+    background-size: cover;
+    filter: blur(20px);
+    z-index: -1;
+  }
+  
+  .textOverlay {
+    position: absolute;
+    bottom: -100px;
+    text-align: center;
+    animation: fadeIn 1s ease forwards;
+  }
+  
+  .textOverlay h2 {
+    font-size: 32px;
+    color: #333;
+    font-family: "Varela Round", sans-serif;
+    margin-bottom: 10px;
+  }
+  
+  .textOverlay p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .rentButton {
+    padding: 12px 24px;
+    background-color: #FE8400;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .rentButton:hover {
+    background-color: #FE8400;
+  }
+  
+  .arrowLeft,
+  .arrowRight {
+    position: absolute;
+    bottom: 0; 
+    transform: translateY(-50%);
+    color: rgb(100, 100, 100);
+    font-size: 36px; 
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.107); 
+    border-radius: 10px; 
     padding: 10px; 
-    cursor: pointer; 
-    font-size: 24px; 
-    z-index: 1; 
-}
-
-.arrowLeft {
-    left: 10px; 
-}
-
-.arrowRight {
-    right: 10px; 
-}
-
-.arrowLeft:hover, .arrowRight:hover {
-    background-color: rgba(0, 0, 0, 0.485); 
-}
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .arrowLeft:hover,
+  .arrowRight:hover {
+    background-color: rgba(0, 0, 0, 0.4); 
+  }
+  
+  .arrowLeft {
+    left: -80px;
+  }
+  
+  .arrowRight {
+    right: -80px;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
