@@ -17,22 +17,18 @@ const rent = () => navigate('/SearchAuto')
     {
       title: "Mercedes AMG GT",
       desc1: "Спортивный автомобиль с мощным двигателем.",
-      desc2: "Доступен в аренду по специальной цене.",
     },
     {
       title: "Mercedes G-Class",
       desc1: "Роскошный внедорожник с классическим дизайном.",
-      desc2: "Идеален для городских и загородных поездок.",
     },
     {
       title: "Mercedes S-Class",
       desc1: "Автомобиль представительского класса для комфортных поездок.",
-      desc2: "Лучший выбор для бизнес-поездок и дальних путешествий.",
     },
     {
       title: "Mercedes EQS",
       desc1: "Электрический седан с футуристическим дизайном.",
-      desc2: "Полностью экологичный и экономичный транспорт.",
     },
   ];
 
@@ -78,7 +74,6 @@ const rent = () => navigate('/SearchAuto')
           <div className={styles.textOverlay}>
             <h2>{descriptions[currentImageIndex].title}</h2>
             <p>{descriptions[currentImageIndex].desc1}</p>
-            <p>{descriptions[currentImageIndex].desc2}</p>
             <button onClick={() => rent()} className={styles.rentButton}>Взять в аренду</button>
           </div>
 

@@ -17,7 +17,7 @@
     color: black;
     font-size: 15px;
     padding: 5px;
-    background-color: #FE8400;
+    background-color: #f1be8c;
     opacity: 0; 
     transform: translateX(200px); 
     animation: slideDown 2s forwards; 
@@ -25,7 +25,7 @@
 }
 .headerRight button:hover {
     transform: scale(0.972);
-    background-color: white;
+    background-color: rgb(182, 182, 182);
     border: 1px solid;
 }
 
@@ -44,28 +44,27 @@
 }
 
 .ulNav a{
-    font-size: 18px;
-    font-family: "Itim", cursive;
+    font-size: 17px;
     letter-spacing: 1px;
-    color: rgb(118, 118, 118);
+    color: rgb(114, 114, 114);
     position: relative; 
     text-decoration: none; 
-    text-transform: uppercase;
+    transition: 0.5s ease;
 }
 
 .ulNav a:hover {
-    color: #FE8400;
+    color: #e9b57a;
 }
 
 .ulNav a::after {
     content: ""; 
     position: absolute; 
     left: 50%; 
-    bottom: 0; 
+    bottom: -1px; 
     width: 0; 
     height: 2px; 
-    background-color: #FE8400; 
-    transition: width 0.4s ease, left 0.4s ease; 
+    background-color: #e9b57a; 
+    transition: width 0.6s ease, left 0.6s ease; 
 }
 
 .ulNav a:hover::after {
