@@ -79,7 +79,11 @@ export const SearchAuto = () => {
                   item.isRented == false ? (
                     <button
                       className={style.BtnCardContain}
-                      onClick={(e) => rent(index, e)}
+                      onClick={() => {
+                        rent(index, item.carName)
+                        localStorage.setItem('orderUid',item.carName + index)
+                        localStorage.setItem('carUid',item.carUid)
+                      }}
                     >
                       Арендовать
                     </button>

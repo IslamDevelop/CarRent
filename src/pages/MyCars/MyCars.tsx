@@ -118,10 +118,10 @@ export const MyCars: React.FC = () => {
                 </div>
                {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
                       e.stopPropagation()
-                      acceptOrder(index,e)}}>{item.acceptOrder == true ? "Ордер принят" : "Принять Аренду"}</button> : false}
+                      acceptOrder(index,item.carName)}}>{item.acceptOrder == true ? "Ордер принят" : "Принять Аренду"}</button> : false}
                    {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
                     e.stopPropagation()
-                    rent(index,e) }}>Отменить ордер</button> : false} 
+                    rent(index,item.carName) }}>Отменить ордер</button> : false} 
               </div>
             </div>
           );

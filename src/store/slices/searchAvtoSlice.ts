@@ -10,6 +10,7 @@ interface Car {
     id:number;
     isRented:boolean
     rentPrice: number
+    carUid: string
   }
   
   interface SearchCarState {
