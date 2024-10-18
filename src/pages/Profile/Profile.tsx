@@ -4,9 +4,12 @@ import Button from "../../components/Forms/Form/Button/Button";
 import img from "../../assets/Profile/7c15a2bafc0d0722be2b0d57a6be6c03.svg";
 import { auth, db } from "../../firebase"; // Импортируйте ваш файл с настройками Firebase
 
+import avatar from "../../assets/Profile//depositphotos_639712656-stock-illustration-add-profile-picture-icon-vector.jpg";
+
 import { SubmitHandler, useForm } from "react-hook-form";
 import addProfile from "../../server/addProfile/addProfile";
 import { onValue, ref } from "firebase/database";
+import addPhoto from "../../server/addProfile/addPhoto";
 
 interface FormData {
   name: string;
@@ -18,6 +21,7 @@ interface FormData {
   citizenship: string;
   inn: string;
   userUID: string;
+  profilePhoto: string;
 }
 
 export const Profile = () => {
@@ -27,11 +31,15 @@ export const Profile = () => {
 
   const submit: SubmitHandler<FormData> = async (data) => {
     try {
-      await addProfile(data);
+      data.userUID = auth.currentUser!.uid;
 
-      data.userUID = auth.currentUser.uid;
+      if (data.profilePhoto) {
+        await addPhoto(data); // Ждем загрузки фото
+      }
+
+      await addProfile(data); // Обновляем профиль
     } catch (error) {
-      console.error("Ошибка при добавлении автомобиля:", error);
+      console.error("Ошибка при добавлении профиля:", error);
     }
   };
 
@@ -58,14 +66,19 @@ export const Profile = () => {
     return () => unsubscribe(); // Очистите слушатель
   }, [setValue]);
 
-
   return (
     <div className="container">
       <form onSubmit={handleSubmit(submit)} className={style.profile}>
         <h4>Ваш профиль</h4>
         <h1>Базовые настройки</h1>
         <div className={style.info}>
-          <div className={style.avatar}></div>
+          <div className={style.avatar}>
+            {profile.profilePhoto ? (
+              <img src={profile.profilePhoto} alt="" />
+            ) : (
+              <img src={avatar} alt="" />
+            )}
+          </div>
           <div className={style.settings}>
             <label htmlFor="file" className={style.settingsLabel}>
               <img src={img} alt="Добавить фотографию" />
@@ -74,6 +87,7 @@ export const Profile = () => {
                 id="file"
                 type="file"
                 placeholder="Добавить фотографию"
+                {...register("profilePhoto")}
               />
               <span>Добавить фотографию</span>
             </label>
