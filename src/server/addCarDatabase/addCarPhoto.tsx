@@ -9,7 +9,7 @@ export const addPhotoCar = async (car) => {
     try {
    
         const storageRef = ref(storage, `carPhoto/${file.name}`);
-
+ 
   
         const uploadTask = uploadBytesResumable(storageRef, file);
 

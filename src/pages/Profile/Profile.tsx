@@ -113,10 +113,10 @@ export const Profile = () => {
             </div>
           )}
 
-          <div className={style.footer}>
+          {/* <div className={style.footer}>
             <Button variant="">Выйти</Button>
             <Button variant="">Мои машины</Button>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

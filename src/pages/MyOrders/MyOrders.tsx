@@ -16,18 +16,23 @@ const [carUid, setCarUid] = useState(uid || undefined)
     onValue(dataBaseCars, (snapshot) => {
       setOrders([snapshot.val() || []])
       
-      
+
     })
   },[])
   
 console.log(orders)
  
   return (
+    <div>
 
-    <div>{orders.map((item) => {
+<div>{orders.map((item) => {
   
-        return (
-          <div key={item.carName + Math.random()}>
+  return (
+       <div className={style.MyOrders}>
+        <div className={style.OrdersContainer}>
+
+          <div className={style.cardsOrders} key={item.carName + Math.random()}>
+
           <img src={item.carPhoto} alt="" />
           <p> Марка: {item.carName}</p>
           <p>Год: {item.carYear}</p>
@@ -35,8 +40,12 @@ console.log(orders)
           <p>{item.acceptOrder == true ? item.carPhone : false}</p>
      
         </div>
+
+        </div>
+        </div>
         )
       })
     }</div>
+  </div>
   )
 }

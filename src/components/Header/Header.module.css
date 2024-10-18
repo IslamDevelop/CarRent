@@ -4,37 +4,26 @@
     justify-content: space-around;
     align-items: center;
     padding-inline: 10px;
-    background-color: rgb(255, 255, 255);
-    color: white;
     font-size: 18px;
     font-weight: bold;
 }
 
 .Header h2 {
     position: absolute;
-    top: -5px;
-    color: #FE8400;
-    font-size: 40px;
+    top: 15px;
+    color: #e9b57a;
+    font-size: 30px;
     letter-spacing: 2px;
-    font-family: "Itim", cursive;
     z-index: 1;
     opacity: 0; 
     transform: translateX(-200px); 
     animation: slideDown 2s forwards; 
 }
 
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-100vw);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
 
 @keyframes slideDown {
 to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0px);
 }
 }

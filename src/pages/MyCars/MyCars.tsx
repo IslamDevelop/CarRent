@@ -4,7 +4,7 @@ import style from "./myCars.module.css";
 import location from "../../assets/MyCar/location.svg";
 import calendar from "../../assets/MyCar/calendar.svg";
 import { SubmitHandler, useForm } from "react-hook-form";
-import addCarDatabase from "../../server/addCarDatabase/addCarDatabase";
+
 import { addPhotoCar } from "../../server/addCarDatabase/addCarPhoto";
 import { onValue, ref } from "firebase/database";
 import { auth, db } from "../../firebase";
@@ -24,18 +24,21 @@ export interface IAddCar {
   carPhone: string
   acceptOrder: boolean
 }
+interface Icar {
+  cars: IAddCar[]
+}
 
 export const MyCars: React.FC = () => {
-  const [cars, setCars] = useState([]);
+  const [cars, setCars] = useState<Icar>();
   const { register, handleSubmit } = useForm<IAddCar>();
   const [isauth, setAuth] = useState(false);
   const submit: SubmitHandler<IAddCar> = async (data) => {
     try {
       await addPhotoCar(data);
       console.log(data.carPhoto);
-      console.log('Автомобиль добавлен успешно');
+      console.log("Автомобиль добавлен успешно");
     } catch (error) {
-      console.error('Ошибка при добавлении автомобиля:', error);
+      console.error("Ошибка при добавлении автомобиля:", error);
     }
   };
   
