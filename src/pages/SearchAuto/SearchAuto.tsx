@@ -11,6 +11,7 @@ import { rent } from "../../hooks/rent";
 import style from "./SearchAuto.module.css";
 import { useNavigate } from "react-router-dom";
 
+import salon from '../../assets/SearchCars/Salon.jpg'
 
 export const SearchAuto = () => {
   const cars = useSelector((state: RootState) => state.searchCar.cars);
@@ -56,8 +57,15 @@ export const SearchAuto = () => {
 
   return (
     <div className={style.Find}>
-      <div className={style.FindContainer}>
+
+       <div className={style.sectionSearch}>
+        <img src={salon} alt="" />
+       </div>
+
+        <div className={style.InputSearch}>
         <SearchInput onSearch={handleSearch} />
+        </div>
+      <div className={style.FindContainer}>
 
         {filteredCars.map((item, index) => {
           return (

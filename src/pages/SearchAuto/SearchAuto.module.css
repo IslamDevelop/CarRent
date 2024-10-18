@@ -3,19 +3,68 @@
     position: absolute;
     top: 0;
     width: 100%;
+    height: 400vh;
     background-color: rgb(18, 18, 18);
   }
   
 .FindContainer {
-  padding: 30px;
+  padding: 20px; 
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
-  margin-top: 80px;
+  justify-content: center; 
+  gap: 15px;
+  margin-top: 50px; 
   color: #fff;
 }
 
+.sectionSearch {
+  height: 270px; 
+  width: 70%; 
+  margin-top: 140px; 
+  margin-left: auto; 
+  margin-right: auto; 
+  border-radius: 15px; 
+  position: relative;
+  overflow: hidden; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+}
+
+.sectionSearch img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; 
+  filter: brightness(0.9); 
+}
+
+.InputSearch {
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  margin-top: 60px; 
+}
+
+.InputSearch h1 {
+  color: rgb(243, 208, 166);
+  text-align: center; 
+}
+
+.InputSearch input {
+  padding: 10px 10px; 
+  margin-left: 50px;
+  color: rgb(243, 208, 166);
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid rgba(177, 177, 177, 0.3); 
+  outline: none;
+  transition: 0.6s ease;
+}
+
+.InputSearch input:hover {
+  box-shadow: 0 0 10px #dba86b;
+}
 
 
 .carContain {
@@ -28,8 +77,8 @@
   
   .cardCar {
     display: flex;
-    flex-direction: column; /* Теперь карточка вертикальная */
-    width: 320px; /* Уменьшаем ширину, так как карточка теперь вертикальная */
+    flex-direction: column; 
+    width: 320px; 
     border-radius: 10px;
     background-color: #1f1f1f;
     padding: 15px;
@@ -55,9 +104,9 @@
   
   .carPrice {
     font-size: 16px;
-    color: #FE8400;
+    color: #000000;
     font-weight: bold;
-    background-color: rgba(255, 132, 0, 0.2);
+    background-color: #e9b57a;
     padding: 4px 6px;
     width: max-content;
     border-radius: 4px;
@@ -65,7 +114,7 @@
   
   .carImage {
     width: 100%;
-    height: 180px; /* Увеличиваем высоту изображения для вертикальной карточки */
+    height: 180px;
     object-fit: cover;
     border-radius: 8px;
     margin-top: 10px;
@@ -73,7 +122,7 @@
   
   .cardRight {
     display: flex;
-    flex-direction: column; /* Столбец для содержимого под изображением */
+    flex-direction: column; 
     justify-content: flex-start;
     gap: 8px;
     margin-top: 15px;
@@ -92,27 +141,11 @@
     border: none;
     font-size: 14px;
     border-radius: 7px;
-    background-color: #FE8400;
+    background-color: #e9b57a;
     color: black;
     position: relative;
     font-weight: bold;
     cursor: pointer;
     z-index: 1;
     margin-top: 10px;
-  }
-  .BtnCardContain::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    height: 100%;
-    width: 0;
-    border-radius: 7px;
-    background-color: #ffffff;
-    z-index: -1;
-    transition: all 0.7s;
-  }
-  .BtnCardContain:hover::before {
-    width: 100%;
-    left: 0%;
   }

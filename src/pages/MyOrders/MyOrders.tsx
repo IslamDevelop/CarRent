@@ -64,7 +64,6 @@ console.log(orders)
         )
       })
     }</div>
-  }
   </div>
   )
 }
