@@ -1,5 +1,3 @@
-
-
 .profile {
   display: flex;
   flex-direction: column;
@@ -24,27 +22,26 @@
   border-radius: 10px;
 
   .avatar {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 120px;
     height: 120px;
-    border: 1px solid transparent;
-    background: #fff;
-    border-radius: 50%;
+    background: #fe0000;
+    border-radius: 50% ;
+    overflow: hidden;
 
-    .img {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      border-radius: 50%;
-      background-position: 50%;
-      background-size: cover;
+    img {
+      width: 100%;
+      height: 100%;
     }
   }
 
   .settings {
     max-width: 210px;
-  
+
     .settingsLabel {
       cursor: pointer;
       display: flex;
@@ -52,11 +49,11 @@
       background-color: #fff;
       border-radius: 6px;
       transition: background-color 0.25s linear 0s; // Ограничиваем область видимости
-  
+
       & img {
         vertical-align: middle; // Отступ между изображением и полем ввода
       }
-  
+
       & input {
         position: absolute;
         z-index: -1;
@@ -67,7 +64,7 @@
         opacity: 0;
         overflow: hidden; // Делаем его абсолютным для легкого клика
       }
-  
+
       & span {
         font-weight: 400;
         font-size: 14px;
@@ -78,7 +75,6 @@
       }
     }
   }
-  
 }
 
 .personal {
@@ -103,8 +99,8 @@
       outline: none;
     }
 
-    & input:hover{
-      border-color: #dfe5f1 !important
+    & input:hover {
+      border-color: #dfe5f1 !important;
     }
   }
 }
