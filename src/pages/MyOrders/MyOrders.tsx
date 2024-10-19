@@ -58,9 +58,9 @@ console.log(orders)
         </div>
 
         <div className={style.OrderCardInfo}>
-          <p> Марка: {item.carName}</p>
-          <p>Год: {item.carYear}</p>
-          <p> Трансмиссия: {item.carTransmission}</p>
+          <p> {item.carName} {item.carModel} {item.carYear} {item.carTransmission}</p>
+         
+          <p>Осталось 16 часов 25 минут</p>
           <p>{item.isRented == true ? item.acceptOrder == true ? item.carPhone : false : "Ордер отменен"}</p>
         </div>
 
