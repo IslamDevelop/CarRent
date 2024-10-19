@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 import style from "./profile.module.scss";
 import Button from "../../components/Forms/Form/Button/Button";
 import img from "../../assets/Profile/7c15a2bafc0d0722be2b0d57a6be6c03.svg";
-import { auth, db } from "../../firebase"; // Импортируйте ваш файл с настройками Firebase
-
-import avatar from "../../assets/Profile//depositphotos_639712656-stock-illustration-add-profile-picture-icon-vector.jpg";
-
+import { auth, db } from "../../firebase";
+import avatar from "../../assets/Profile/depositphotos_639712656-stock-illustration-add-profile-picture-icon-vector.jpg";
 import { SubmitHandler, useForm } from "react-hook-form";
 import addProfile from "../../server/addProfile/addProfile";
 import { onValue, ref } from "firebase/database";
@@ -21,12 +19,11 @@ interface FormData {
   citizenship: string;
   inn: string;
   userUID: string;
-  profilePhoto: string;
+  profilePhoto: string; // Измените на string, если вы не используете FileList
 }
 
 export const Profile = () => {
-  const [profile, setProfile] = useState([]);
-
+  const [profile, setProfile] = useState<FormData | null>(null); // Измените тип на FormData | null
   const { register, handleSubmit, setValue } = useForm<FormData>();
 
   const submit: SubmitHandler<FormData> = async (data) => {
@@ -47,20 +44,14 @@ export const Profile = () => {
     const dataBaseProfile = ref(db, `/UsersProfile/${auth.currentUser.uid}`);
 
     const unsubscribe = onValue(dataBaseProfile, (snapshot) => {
-      const profiles = snapshot.val() || [];
+      const profiles = snapshot.val();
       setProfile(profiles);
 
-      console.log(profile);
-
-      // Найдите профиль текущего пользователя
-      // const User = profiles.find((el) => el.userUID === auth.currentUser.uid);
-      // setCurrentUser(User || null);
-
-      // if (User) {
-      //   Object.keys(User).forEach((key) =>
-      //     setValue(key as keyof FormData, User[key])
-      //   );
-      // }
+      if (profiles) {
+        Object.keys(profiles).forEach((key) => {
+          setValue(key as keyof FormData, profiles[key]);
+        });
+      }
     });
 
     return () => unsubscribe(); // Очистите слушатель
@@ -73,10 +64,10 @@ export const Profile = () => {
         <h1>Базовые настройки</h1>
         <div className={style.info}>
           <div className={style.avatar}>
-            {profile.profilePhoto ? (
-              <img src={profile.profilePhoto} alt="" />
+            {profile && profile.profilePhoto ? (
+              <img src={profile.profilePhoto} alt="Аватар" />
             ) : (
-              <img src={avatar} alt="" />
+              <img src={avatar} alt="Аватар по умолчанию" />
             )}
           </div>
           <div className={style.settings}>
@@ -86,7 +77,6 @@ export const Profile = () => {
                 className={style.fileInput}
                 id="file"
                 type="file"
-                placeholder="Добавить фотографию"
                 {...register("profilePhoto")}
               />
               <span>Добавить фотографию</span>
@@ -100,23 +90,22 @@ export const Profile = () => {
               type="text"
               placeholder="Имя"
               {...register("name", { required: true })}
-              defaultValue={profile.name}
+              defaultValue={profile?.name} // Используем опциональную цепочку
             />
           </label>
           <label className={style.label}>
             <input
-              className="input"
               type="text"
               placeholder="Фамилия"
               {...register("surname", { required: true })}
-              defaultValue={profile.surname}
+              defaultValue={profile?.surname}
             />
           </label>
           <label className={style.label}>
             <input
               type="date"
-              defaultValue={profile.birthDate}
               {...register("birthDate", { required: true })}
+              defaultValue={profile?.birthDate}
             />
           </label>
         </div>
@@ -127,7 +116,7 @@ export const Profile = () => {
               type="number"
               placeholder="Телефон"
               {...register("phone", { required: true })}
-              defaultValue={profile.phone}
+              defaultValue={profile?.phone}
             />
           </label>
           <label className={style.label}>
@@ -135,7 +124,7 @@ export const Profile = () => {
               type="email"
               placeholder="E-mail"
               {...register("email", { required: true })}
-              defaultValue={profile.email}
+              defaultValue={profile?.email}
             />
           </label>
           <label className={style.label}>
@@ -143,7 +132,7 @@ export const Profile = () => {
               type="number"
               placeholder="Водительский стаж"
               {...register("drivingExperience", { required: true })}
-              defaultValue={profile.drivingExperience}
+              defaultValue={profile?.drivingExperience}
             />
           </label>
           <label className={style.label}>
@@ -151,7 +140,7 @@ export const Profile = () => {
               type="text"
               placeholder="Гражданство"
               {...register("citizenship", { required: true })}
-              defaultValue={profile.citizenship}
+              defaultValue={profile?.citizenship}
             />
           </label>
           <label className={style.label}>
@@ -159,7 +148,7 @@ export const Profile = () => {
               type="number"
               placeholder="ИНН"
               {...register("inn", { required: true })}
-              defaultValue={profile.inn}
+              defaultValue={profile?.inn}
             />
           </label>
         </div>
