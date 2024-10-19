@@ -46,7 +46,7 @@ export const SearchAuto = () => {
   }, []);
 
   const handleSearch = (text: string) => {
-    const lowercasedText = text.toLowerCase(); // Приводим текст к нижнему регистру для поиска
+    const lowercasedText = text.toLowerCase(); 
     const filtered = cars.filter(
       (car) =>
         car.carName.toLowerCase().includes(lowercasedText) ||
@@ -100,12 +100,12 @@ export const SearchAuto = () => {
               <div className={style.cardRight}>
                 <div className={style.cardDetails}>
                 <div className={style.cardHeader}>
-                  <p>{item.carName}</p>
-                  <p className={style.carModel}>{item.carModel}</p>
+                  <p>{item.carName} {item.carModel} {item.carYear} {item.carTransmission}</p>
+                  {/* <p className={style.carModel}>{item.carName} {item.carModel} {item.carYear}.г</p> */}
                   <p className={style.carPrice}>{item.rentPrice}&#8381; в сутки</p>
                 </div>
-                  <p>Год: {item.carYear}</p>
-                  <p>Трансмиссия: {item.carTransmission}</p>
+                 
+                 
                 </div>
 
                 <div className={style.CardRightButton}>
