@@ -37,6 +37,7 @@ export const Profile = () => {
       await addProfile(data); // Обновляем профиль
     } catch (error) {
       console.error("Ошибка при добавлении профиля:", error);
+      console.error("Ошибка при добавлении профиля:", error);
     }
   };
 

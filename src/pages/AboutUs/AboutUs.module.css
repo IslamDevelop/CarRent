@@ -1,15 +1,20 @@
 .div {
-    background-color: white;
-    height: 90vh;
+    position: absolute;
+    top: 0;
+    height: 300vh;
+    width: 100%;
+    background-color: rgb(24, 24, 24);
+    background: linear-gradient(90deg, #000000 50%, #131313 50%);
 }
 
 .aboutTitle {
     display: flex;
     justify-content: center;
+    margin-top: 100px;
 }
 
 .aboutTitle h1{
-    color: black;
+    color: #e9b57a;
     letter-spacing: 2px;
     font-family: "Itim", cursive;
     position: relative;
@@ -21,21 +26,22 @@
     width: 100%;
     height: 1px;
     position: absolute;
-    background-color: #FE8400;
+    background-color: #e9b57a;
 }
 
 .aboutMain {
     width: 100%;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 50px;
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
 .aboutMainLeft img{
     width: 780px;
     height: 500px;
-    border-radius: 10px;
+    border-radius: 15px;
     animation: slideInLeft 2s ease-out forwards;
 }
 @keyframes slideInLeft {
@@ -51,7 +57,6 @@
 
 .aboutMainRight {
     width: 780px;
-    margin-top: 30px;
     animation: slideInRight 2s ease-out forwards;
 }
 @keyframes slideInRight {
@@ -66,13 +71,14 @@
 }
 
 .aboutMainRight p {
-    width: 650px;;
-    color: black;
-    font-size: 23px;
+    width: 750px;
+    color: rgb(147, 147, 147);
+    font-size: 22px;
     font-weight: 600;
 }
 .aboutMainRight h2 {
     font-size: 24px;
     font-weight: 600;
-    color: #FE8400;
+    letter-spacing: 1px;
+    color: #e9b57a;
 }

@@ -26,7 +26,11 @@ export const AboutUs = () => {
           We`s know how to make our customers love us by oue high products with affordable prices. 
           Our company was build.
         </p>
-        <h2>Read More</h2>
+        <p>
+          We also offer flexible pricing options, including hourly rates, project fees and retainer agreements,
+          so you can choose the option that best suits your budget and goals.
+        </p>
+        <h2>Read More...</h2>
       </div>
 
     </div>

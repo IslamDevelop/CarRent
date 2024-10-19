@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import style from "./search.module.scss";
+import style from "./SearchAuto.module.css";
 
 interface SearchInputProps {
   onSearch: (text: string) => void;

@@ -10,6 +10,7 @@ import { onValue, ref } from "firebase/database";
 import { auth, db } from "../../firebase";
 import { rent } from "../../hooks/rent";
 import { acceptOrder } from "../../hooks/acceptOrder";
+import { date } from "../../hooks/date";
 
 
 export interface IAddCar {
@@ -23,6 +24,8 @@ export interface IAddCar {
   isRented: boolean;
   carPhone: string
   acceptOrder: boolean
+  dateAdd: string
+  rentDays: number
 }
 interface Icar {
   cars: IAddCar[]
@@ -34,6 +37,8 @@ export const MyCars: React.FC = () => {
   const [isauth, setAuth] = useState(false);
   const submit: SubmitHandler<IAddCar> = async (data) => {
     try {
+      
+      data.dateAdd = date()
       await addPhotoCar(data);
       console.log(data.carPhoto);
       console.log("Автомобиль добавлен успешно");
@@ -58,6 +63,12 @@ export const MyCars: React.FC = () => {
     });
     return () => unsubscribe();
   }, []);
+
+
+
+
+
+
   return (
     <div className={style.MyCars}>
   <div className={style.contain}>
@@ -88,6 +99,14 @@ export const MyCars: React.FC = () => {
             <option value="Не известно">Коробка передач</option>
             <option value="AT">AT</option>
             <option value="MT">MT</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="rentDays"></label>
+          <select id="rentDays" {...register('rentDays')}>
+            <option value="1">1 день</option>
+            <option value="2">2 дня</option>
+            <option value="3">3 дня</option>
           </select>
         </div>
         <div>
@@ -122,6 +141,7 @@ export const MyCars: React.FC = () => {
                    {item.isRented == true ? <button className={style.BtnCardContain} onClick={(e) => {
                     e.stopPropagation()
                     rent(index,item.carName) }}>Отменить ордер</button> : false} 
+                    <p>добавлено {item.dateAdd}</p>
               </div>
             </div>
           );
