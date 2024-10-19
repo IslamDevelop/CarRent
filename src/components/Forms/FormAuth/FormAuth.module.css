@@ -30,7 +30,7 @@
     backdrop-filter: blur(1px);
     box-shadow: 0 0 5px black;
     position: relative;
-    background: repeating-conic-gradient(from var(--a), #ffcaa6 0%, #ffcaa6 5%, transparent 5%, transparent 40%, #ffcaa6 50%);
+    background: repeating-conic-gradient(from var(--a), #fec195 0%, #fec195 5%, transparent 5%, transparent 40%, #fec195 50%);
     animation: animate 12s linear infinite;
 }
 .authForm::after {
@@ -90,7 +90,7 @@
     border-bottom: 1px solid white;
 }
 .authFormRight input:focus {
-    border-bottom: 1px solid #ffcaa6;
+    border-bottom: 1px solid #fec195;
 }
 
 .authFormRight img {
@@ -106,7 +106,7 @@
     font-size: 15px;
     letter-spacing: 1px;
     padding: 8px;
-    background-color: #ffcaa6;
+    background-color: #fec195;
     transition: 0.4s ease;
 }
 .authForm button:hover {
@@ -119,7 +119,7 @@
 }
 .authFormRight a {
     padding: 5px;
-    color: #ffcaa6;
+    color: #fec195;
 }
 .authFormRight a:hover {
     color: #616161;
@@ -130,8 +130,8 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
-    box-shadow: 0 0 10px #ffcaa6;
-    border-color: #ffcaa6;
+    box-shadow: 0 0 10px #fec195;
+    border-color: #fec195;
     padding: 50px;
     border-radius: 15px;
 }
@@ -173,7 +173,7 @@
     z-index: 3;
 }
 .registrFormContainer input:focus {
-    border-bottom: 1px solid #ffcaa6;
+    border-bottom: 1px solid #fec195;
 }
 
 .authFormRegistr {
@@ -186,7 +186,7 @@
     backdrop-filter: blur(1px);
     box-shadow: 0 0 5px black;
     position: relative;
-    background: repeating-conic-gradient(from var(--a), #ffcaa6 0%, #ffcaa6 5%, transparent 5%, transparent 40%, #ffcaa6 50%);
+    background: repeating-conic-gradient(from var(--a), #fec195 0%, #fec195 5%, transparent 5%, transparent 40%, #fec195 50%);
     animation: animate 12s linear infinite;
 }
 .authFormRegistr::after {
@@ -228,7 +228,7 @@
     font-size: 15px;
     letter-spacing: 1px;
     padding: 8px;
-    background-color: #ffcaa6;
+    background-color: #fec195;
     transition: 0.4s ease;
 }
 .authFormRegistr form button:hover {
@@ -242,7 +242,7 @@
 }
 .authFormRegistr a {
     padding: 5px;
-    color: #ffcaa6;
+    color: #fec195;
 }
 .authFormRegistr a:hover {
     color: #616161;
@@ -274,8 +274,22 @@
     .authFormRegistr:hover {
         box-shadow: none;
     }
+    .authForm {
+        background: none;
+    }
+    .authForm::after {
+        display: none;
+    }
+    .authFormRegistr {
+        background: none;
+    }
+    .authFormRegistr::after{
+        display: none;
+    }
     
 }
+
+
 @media (max-width: 450px) {
     .authFormRight {
         position: absolute;

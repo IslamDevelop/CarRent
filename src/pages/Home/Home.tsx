@@ -1,87 +1,101 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './Home.module.css';
 
-import imgMerc1 from '../../assets/HomeImage/Merc.png';
-import imgMerc2 from '../../assets/HomeImage/Mer2.png';
-import imgMerc3 from '../../assets/HomeImage/Merc3.png';
-import imgMerc4 from '../../assets/HomeImage/Merc4.png';
-import { useNavigate } from 'react-router-dom';
+import huracanLight from '../../assets/HomeImage/Huracan Light.jpg';
+import aventador from '../../assets/HomeImage/Aventador.jpg';
+import mclaren from '../../assets/HomeImage/McLaren.jpg';
+import labmorghini from '../../assets/HomeImage/Merc4.jpg';
 
 export const Home = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const navigate = useNavigate()
-const rent = () => navigate('/SearchAuto')
-  const images = [imgMerc3, imgMerc2, imgMerc1, imgMerc4];
-  const descriptions = [
-    {
-      title: "Mercedes AMG GT",
-      desc1: "Спортивный автомобиль с мощным двигателем.",
-    },
-    {
-      title: "Mercedes G-Class",
-      desc1: "Роскошный внедорожник с классическим дизайном.",
-    },
-    {
-      title: "Mercedes S-Class",
-      desc1: "Автомобиль представительского класса для комфортных поездок.",
-    },
-    {
-      title: "Mercedes EQS",
-      desc1: "Электрический седан с футуристическим дизайном.",
-    },
+  // Состояния
+  const [itemActive, setItemActive] = useState(0);
+  const items = [
+    { src: labmorghini, title: 'Slider 12', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
+    { src: aventador, title: 'Slider 20', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
+    { src: huracanLight, title: 'Slider 23', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
+    { src: mclaren, title: 'Slider 54', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
+    { src: huracanLight, title: 'Slider 045', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
   ];
 
-  const nextImage = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-      setTimeout(() => setIsAnimating(false), 1000);
-    }
+  const thumbnails = items; // То же количество элементов, что и в items
+  const countItem = items.length;
+
+  const sliderInterval = useRef(null); // Для сохранения интервала
+
+  // Автопрокрутка слайдера
+  useEffect(() => {
+    startAutoSlide();
+    return () => clearInterval(sliderInterval.current);
+  }, []);
+
+  const startAutoSlide = () => {
+    sliderInterval.current = setInterval(() => {
+      handleNext();
+    }, 6000); // 6 секунд для автопрокрутки
   };
 
-  const prevImage = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === 0 ? images.length - 1 : prevIndex - 1
-      );
-      setTimeout(() => setIsAnimating(false), 1000);
-    }
+  // Следующий слайд
+  const handleNext = () => {
+    setItemActive((prevItem) => (prevItem + 1) % countItem);
+  };
+
+  // Предыдущий слайд
+  const handlePrev = () => {
+    setItemActive((prevItem) => (prevItem - 1 + countItem) % countItem);
+  };
+
+  // Переключение слайдера вручную и сброс интервала автопрокрутки
+  const showSlider = (index) => {
+    setItemActive(index);
+    clearInterval(sliderInterval.current); // Остановка автопрокрутки
+    startAutoSlide(); // Перезапуск автопрокрутки
+  };
+
+  // Обработчик клика по миниатюре
+  const handleThumbnailClick = (index) => {
+    showSlider(index);
   };
 
   return (
     <div className={styles.homeParent}>
-      <div className={styles.home}>
-        <div className={styles.mainLeft}>
-          <div className={styles.mainLeftSection}>
-            <h1>Enjoy your life with our comfortable cars.</h1>
-            <p>Carent, is ready to serve the best experience in car rental.</p>
-            <button>Explore Now</button>
-          </div>
+      <div className={styles.slider}>
+        {/* list Items */}
+        <div className={styles.list}>
+          {items.map((item, index) => (
+            <div key={index} className={`${styles.item} ${index === itemActive ? styles.active : ''}`}>
+              <img src={item.src} alt={item.title} />
+              <div className={styles.content}>
+                <p>design</p>
+                <h2>{item.title}</h2>
+                <p>{item.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className={styles.mainRight}>
-          <button className={styles.arrowLeft} onClick={prevImage}>
-            &lt;
-          </button>
+        <div className={styles.arrows}>
+          <button id="prev" onClick={handlePrev}>&lt;</button>
+          <button id="next" onClick={handleNext}>&gt;</button>
+        </div>
 
-          <div className={styles.imageContainer}>
-            <div className={styles.imageBlurBackground}></div>
-            <img src={images[currentImageIndex]} alt="Mercedes" className={styles.image} />
-          </div>
-
-          <div className={styles.textOverlay}>
-            <h2>{descriptions[currentImageIndex].title}</h2>
-            <p>{descriptions[currentImageIndex].desc1}</p>
-            <button onClick={() => rent()} className={styles.rentButton}>Взять в аренду</button>
-          </div>
-
-          <button className={styles.arrowRight} onClick={nextImage}>
-            &gt;
-          </button>
+        <div className={styles.thumbnail}>
+          {thumbnails.map((thumbnail, index) => (
+            <div
+              key={index}
+              className={`${styles.item} ${index === itemActive ? styles.active : ''}`}
+              onClick={() => handleThumbnailClick(index)}
+            >
+              <img src={thumbnail.src} alt={`Thumbnail ${index + 1}`} />
+              <div className={styles.content}>Name Slider</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
+
+  
 };
+        // <button className={styles.arrowRight} onClick={nextImage}>
+        //     &gt;
+        //   </button>

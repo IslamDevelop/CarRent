@@ -23,27 +23,27 @@ export const HeaderNav = () => {
       <div className={styles.headerRight}>
         <ul className={styles.ulNav}>
           <li>
-            <Link to="/">Домой</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/Profile">Профиль</Link>
+            <Link to="/Profile">Profile</Link>
           </li>
           <li>
-            <Link to="/SearchAuto">Все автомобили</Link>
+            <Link to="/SearchAuto">Cars</Link>
           </li>
           <li>
-            <Link to="/MyCars">Мои авто</Link>
+            <Link to="/MyCars">Add</Link>
           </li>
           <li>
-            <Link to="/MyOrders">Аренда</Link>
+            <Link to="/MyOrders">Order</Link>
           </li>
           <li>
-            <Link to="/AboutUs">О нас</Link>
+            <Link to="/AboutUs">About us</Link>
           </li>
         </ul>
         <div>
           <Link to="/Login">
-           {!isauth ?  <button>Вход|Регистрация</button> : <button onClick={() => signOut(auth)}>Выход</button>} 
+           {!isauth ?  <button>Login | Sign up</button> : <button onClick={() => signOut(auth)}>Sign out</button>} 
           </Link>
         </div>
       </div>

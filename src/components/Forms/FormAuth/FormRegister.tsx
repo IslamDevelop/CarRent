@@ -8,6 +8,9 @@ import lambaForma from '../../../assets/FormaRegistr/Orange Car.mp4'
 import user from '../../../assets/FormaRegistr/user.svg'
 import phone from '../../../assets/FormaRegistr/phone.svg'
 import lock from '../../../assets/FormaRegistr/lock.svg'
+import sobachka from '../../../assets/FormaRegistr/@.svg'
+
+
 import { createUserWithEmailAndPassword, getAuth, signInAnonymously, SignInMethod } from 'firebase/auth';
 
 interface RegForm {
@@ -60,13 +63,13 @@ console.log(user)
      <form className={styles.formContain} onSubmit={handleSubmit(submit)}>
       <div className={styles.inputs}>
         <label htmlFor="login"></label>
-        <input type="text" {...register('username', {required: true})}  placeholder='Login'/>
+        <input type="text" {...register('username', {required: true})}  placeholder='Name'/>
         <img src={ user } />
       </div>
       <div className={styles.inputs}>
         <label htmlFor="login"></label>
         <input type="text" {...register('email', {required: true})}  placeholder='Email'/>
-        <img src={ user } />
+        <img src={ sobachka } />
       </div>
       <div className={styles.inputs}>
         <label htmlFor="phone"></label>
