@@ -37,7 +37,7 @@ export const Profile = () => {
     <div className={style.Profile}>
       <div className={style.container}>
         <form onSubmit={handleSubmit(submit)} className={style.profile}>
-          <h4>Ваш профиль</h4>
+          <h4>Profile</h4>
           <div className={style.topRow}>
             <div className={style.avatar}>
               <label htmlFor="file" className={style.fileLabel}>
@@ -51,10 +51,10 @@ export const Profile = () => {
               </label>
             </div>
             <div className={style.nameLabel}>
-              <p>Yusuf</p> {/* Заменяем input на <p> с именем Yusuf */}
+              <p>Yusuf</p>
             </div>
             <Button variant="" onClick={toggleEdit}>
-              {isEditing ? "Сохранить" : "Редактировать"}
+              {isEditing ? "Save" : "Edit"}
             </Button>
           </div>
 
