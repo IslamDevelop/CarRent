@@ -46,14 +46,28 @@ console.log(orders)
   
   return (
     <div>
+      <div className={style.Orders}>
+        <div className={style.OrdersContain}>
+        <h1>Orders</h1>
 
-          <div key={item.carName + Math.random()}>
+      <div className={style.OrderCardCars}>
+        <div className={style.OrderCard} key={item.carName + Math.random()}>
+
+        <div className={style.OrderImage}>
           <img src={item.carPhoto} alt="" />
+        </div>
+
+        <div className={style.OrderCardInfo}>
           <p> Марка: {item.carName}</p>
           <p>Год: {item.carYear}</p>
           <p> Трансмиссия: {item.carTransmission}</p>
           <p>{item.isRented == true ? item.acceptOrder == true ? item.carPhone : false : "Ордер отменен"}</p>
-     
+        </div>
+
+      </div>
+    </div>
+
+    </div>
     </div>
 
     <button onClick={() => {

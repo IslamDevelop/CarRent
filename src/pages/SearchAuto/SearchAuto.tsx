@@ -67,22 +67,48 @@ export const SearchAuto = () => {
         </div>
       <div className={style.FindContainer}>
 
+        <div className={style.sideCard}>
+          <h2>Summary</h2>
+          <div>
+            <h3>SERVICE TYPE</h3>
+            <p>Hourly</p>
+          </div>
+          <div>
+            <h3>PICKUP LOCATION</h3>
+            <p>Russian, Moscow</p>
+          </div>
+          <div>
+            <h3>DROP OFF LOCATION</h3>
+            <p>Russian, Moscow</p>
+          </div>
+          <div>
+            <h3>PICKUP DATE, TIME</h3>
+            <p>23-10-2024, 21:00</p>
+          </div>
+          <div className={style.lastDivSide}>
+            <h3>TOTAL TIME</h3>
+            <p>7h 0m</p>
+          </div>
+        </div>
+
         {filteredCars.map((item, index) => {
           return (
             <div key={item.carName + Math.random()} className={style.cardCar}>
               <div className={style.cardLeft}>
-                <div className={style.cardHeader}>
-                  <p className={style.carModel}>{item.carModel}</p>
-                  <p className={style.carPrice}>{item.rentPrice}р в сутки</p>
-                </div>
                 <img src={item.carPhoto} alt="Car" className={style.carImage} />
               </div>
               <div className={style.cardRight}>
                 <div className={style.cardDetails}>
-                  <p>Марка: {item.carName}</p>
+                <div className={style.cardHeader}>
+                  <p>{item.carName}</p>
+                  <p className={style.carModel}>{item.carModel}</p>
+                  <p className={style.carPrice}>{item.rentPrice}&#8381; в сутки</p>
+                </div>
                   <p>Год: {item.carYear}</p>
                   <p>Трансмиссия: {item.carTransmission}</p>
                 </div>
+
+                <div className={style.CardRightButton}>
                 {isauth ? (
                   item.isRented == false ? (
                     <button
@@ -101,6 +127,8 @@ export const SearchAuto = () => {
                 ) : (
                   <button onClick={() => redirectLogin()}>Арендовать</button>
                 )}
+                </div>
+                
               </div>
             </div>
           );

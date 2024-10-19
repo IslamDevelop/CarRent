@@ -16,7 +16,6 @@
 .aboutTitle h1{
     color: #e9b57a;
     letter-spacing: 2px;
-    font-family: "Itim", cursive;
     position: relative;
 }
 .aboutTitle h1::after {
@@ -71,7 +70,8 @@
 }
 
 .aboutMainRight p {
-    width: 750px;
+    display: flex;
+    flex-wrap: wrap;
     color: rgb(147, 147, 147);
     font-size: 22px;
     font-weight: 600;
