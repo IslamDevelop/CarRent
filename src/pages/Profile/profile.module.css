@@ -37,6 +37,13 @@ form h4 {
   border-radius: 50%;
   background-color: #fff;
   overflow: hidden;
+  position: relative;
+}
+.avatar input {
+  width: 16px;
+  padding: 52px;
+  opacity: 0%;
+  position: absolute;
 }
 
 .avatar img {

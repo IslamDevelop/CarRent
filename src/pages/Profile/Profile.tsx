@@ -68,6 +68,7 @@ export const Profile = () => {
         <form onSubmit={handleSubmit(submit)} className={style.profile}>
           <h4>Profile</h4>
           <div className={style.avatar}>
+          <input type="file" id="lads" {...register('profilePhoto')} />
             {profile && profile.profilePhoto ? (
               <img src={profile.profilePhoto} alt=""/>
             ) : (
