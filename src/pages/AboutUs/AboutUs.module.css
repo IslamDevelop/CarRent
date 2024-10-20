@@ -1,7 +1,7 @@
 .div {
     position: absolute;
     top: 0;
-    height: 300vh;
+    height: 150vh;
     width: 100%;
     background-color: rgb(24, 24, 24);
     background: linear-gradient(90deg, #000000 50%, #131313 50%);
@@ -50,7 +50,7 @@
     }
     to {
         transform: translateX(0);
-        opacity: 1;
+        opacity: 0.8;
     }
 }
 

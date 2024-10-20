@@ -1,6 +1,7 @@
 import React from 'react'
-import lamba from '../../assets/AboutImage/AboutMain.jpg'
+import lamba from '../../assets/AboutImage/Dodge.jpg'
 import styles from './AboutUs.module.css'
+
 
 export const AboutUs = () => {
   return (
@@ -36,5 +37,6 @@ export const AboutUs = () => {
     </div>
 
     </div>
+    
   )
 }

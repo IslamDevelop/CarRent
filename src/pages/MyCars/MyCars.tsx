@@ -70,7 +70,7 @@ export const MyCars: React.FC = () => {
               <div className={style.cardLeft}>
                 <div className={style.cardHeader}>
                   <p className={style.carModel}>{item.carName} {item.carModel}</p>
-                  <p className={style.carPrice}>{item.rentPrice}р в сутки</p>
+                  <p className={style.carPrice}>Price: {item.rentPrice}&#8381;</p>
                 </div>
                 <img src={item.carPhoto} alt="Car" className={style.carImage} />
               </div>

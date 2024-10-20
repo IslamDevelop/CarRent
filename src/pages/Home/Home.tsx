@@ -5,24 +5,25 @@ import huracanLight from '../../assets/HomeImage/Huracan Light.jpg';
 import aventador from '../../assets/HomeImage/Aventador.jpg';
 import mclaren from '../../assets/HomeImage/McLaren.jpg';
 import labmorghini from '../../assets/HomeImage/Merc4.jpg';
+import RR from '../../assets/HomeImage/RR.jpg';
 
 export const Home = () => {
-  // Состояния
+
   const [itemActive, setItemActive] = useState(0);
   const items = [
-    { src: labmorghini, title: 'Slider 12', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
-    { src: aventador, title: 'Slider 20', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
-    { src: huracanLight, title: 'Slider 23', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
-    { src: mclaren, title: 'Slider 54', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
-    { src: huracanLight, title: 'Slider 045', text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, neque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, ex.' },
+    { src: labmorghini, title: 'The Perfect Road Trip', text: 'A sleek convertible roars to life as the driver hits the gas, ready for adventure. The open road stretches ahead, lined with scenic views and endless possibilities.' },
+    { src: aventador, title: 'Choosing the Right Rental Car', text: 'Customers browse through a variety of cars, from compact sedans to spacious SUVs, at the rental desk. Friendly staff provide recommendations based on budget and travel needs.' },
+    { src: huracanLight, title: 'Exploring the City', text: 'A stylish hatchback glides through bustling city streets, navigating traffic with ease. The driver stops at popular landmarks, capturing moments with quick photos. ' },
+    { src: mclaren, title: 'Driving Through Nature', text: 'An all-terrain vehicle tackles rugged trails, showcasing its power and versatility in the wild. Passengers enjoy breathtaking views of mountains and forests as they cruise along winding paths.' },
+    { src: huracanLight, title: 'Returning the Rental Car', text: 'As the sun sets, the driver pulls into the rental agency, the day’s adventures fresh in their mind. They fill out the return paperwork while the staff inspects the vehicle for any damages.' },
   ];
 
-  const thumbnails = items; // То же количество элементов, что и в items
+  const thumbnails = items; 
   const countItem = items.length;
 
-  const sliderInterval = useRef(null); // Для сохранения интервала
+  const sliderInterval = useRef(null); 
 
-  // Автопрокрутка слайдера
+
   useEffect(() => {
     startAutoSlide();
     return () => clearInterval(sliderInterval.current);
@@ -31,27 +32,27 @@ export const Home = () => {
   const startAutoSlide = () => {
     sliderInterval.current = setInterval(() => {
       handleNext();
-    }, 6000); // 6 секунд для автопрокрутки
+    }, 6000); 
   };
 
-  // Следующий слайд
+
   const handleNext = () => {
     setItemActive((prevItem) => (prevItem + 1) % countItem);
   };
 
-  // Предыдущий слайд
+
   const handlePrev = () => {
     setItemActive((prevItem) => (prevItem - 1 + countItem) % countItem);
   };
 
-  // Переключение слайдера вручную и сброс интервала автопрокрутки
+
   const showSlider = (index) => {
     setItemActive(index);
-    clearInterval(sliderInterval.current); // Остановка автопрокрутки
-    startAutoSlide(); // Перезапуск автопрокрутки
+    clearInterval(sliderInterval.current); 
+    startAutoSlide(); 
   };
 
-  // Обработчик клика по миниатюре
+
   const handleThumbnailClick = (index) => {
     showSlider(index);
   };
@@ -59,7 +60,7 @@ export const Home = () => {
   return (
     <div className={styles.homeParent}>
       <div className={styles.slider}>
-        {/* list Items */}
+
         <div className={styles.list}>
           {items.map((item, index) => (
             <div key={index} className={`${styles.item} ${index === itemActive ? styles.active : ''}`}>
@@ -96,6 +97,3 @@ export const Home = () => {
 
   
 };
-        // <button className={styles.arrowRight} onClick={nextImage}>
-        //     &gt;
-        //   </button>

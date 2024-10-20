@@ -103,7 +103,7 @@ export const SearchAuto = () => {
                 <div className={style.cardHeader}>
                   <p>{item.carName} {item.carModel} {item.carYear} {item.carTransmission}</p>
                   {/* <p className={style.carModel}>{item.carName} {item.carModel} {item.carYear}.г</p> */}
-                  <p className={style.carPrice}>{item.rentPrice}&#8381; в сутки</p>
+                  <p className={style.carPrice}>Price: {item.rentPrice}&#8381;</p>
                 </div>
                  
                 <span>добавлено пользователем {item.carUser} {item.dateAdd}</span>
