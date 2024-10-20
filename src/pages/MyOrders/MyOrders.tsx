@@ -40,7 +40,7 @@ console.log(orders)
   return (
     <div>
 
-{!carUid ? <div>У вас нет арендованного автомобиля</div> :
+{!carUid ? <div className={style.Orders}></div> :
 
 <div>{orders.map((item) => {
   

@@ -93,6 +93,7 @@
   border: 1px solid rgba(177, 177, 177, 0.3); 
   outline: none;
   transition: 0.6s ease;
+  width: 350px;
 }
 
 .InputSearch input:hover {
