@@ -1,7 +1,7 @@
-import React from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form';
+import React, { useEffect } from 'react'
+import { appendErrors, SubmitHandler, useForm } from 'react-hook-form';
 import writeUserData from '../../../server/FornAuthDatabase/AuthDatabase';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from "./FormAuth.module.css"
 
 import lambaForma from '../../../assets/FormaRegistr/Orange Car.mp4'
@@ -12,6 +12,8 @@ import sobachka from '../../../assets/FormaRegistr/@.svg'
 
 
 import { createUserWithEmailAndPassword, getAuth, signInAnonymously, SignInMethod } from 'firebase/auth';
+import { auth } from '../../../firebase';
+import Button from '../Form/Button/Button';
 
 interface RegForm {
   username: string;
@@ -22,9 +24,10 @@ interface RegForm {
 }
 
 export const FormRegister = () => {
-  const {register, handleSubmit} = useForm<RegForm>({
-   
-  })
+  const {register, handleSubmit, formState: {errors,isSubmitting,isSubmitSuccessful}} = useForm<RegForm>(
+    {mode: "onBlur"}
+  )
+  const navigate = useNavigate()
   const  submit: SubmitHandler<RegForm> = async data => {
     console.log(data)
     const auth = await getAuth()
@@ -49,6 +52,14 @@ export const FormRegister = () => {
 
    }
 console.log(user)
+useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged((user) => {
+    if (user) {
+      navigate('/')
+    }
+  });
+  return () => unsubscribe();
+}, []);
   
   
   return (
@@ -68,12 +79,20 @@ console.log(user)
       </div>
       <div className={styles.inputs}>
         <label htmlFor="login"></label>
-        <input type="text" {...register('email', {required: true})}  placeholder='Email'/>
+        <input
+                    {...register('email', { required: true,  pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Некорректный email",
+                    },})}
+                    placeholder="Email"
+                  /> 
+                  {errors.email && <span>{errors.email.message}</span>}
         <img src={ sobachka } />
       </div>
       <div className={styles.inputs}>
         <label htmlFor="phone"></label>
-        <input type="number" {...register('phone', {required: true})} placeholder='Phone'/>
+        <input type="number" {...register('phone', {required: true, minLength: {value: 10, message: "Минимум 10 символов"}})} placeholder='Phone'/>
+        {errors.phone && <span>{errors.phone.message}</span>}
         <img src={ phone } />
       </div>
 
@@ -83,7 +102,8 @@ console.log(user)
         <img src={ lock } />
       </div>
 
-      <button className={styles.buttonRegister} >Register</button>
+      {isSubmitting ? <button type='button' className={styles.buttonRegister}>Loading...</button> : <button className={styles.buttonRegister} >Register</button>}
+      <span>{isSubmitSuccessful ? "Вы успешно зарегестрировались" : false}</span>
      </form>
        <p>have an account <Link to='/Login'>Sign In</Link></p>
     </div>

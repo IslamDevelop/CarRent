@@ -20,16 +20,31 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  z-index: 1;
+  position: relative;
+}
+.buttonAndCardContain {
+  display: flex;
+  flex-direction: column;
 }
 
 .formRow {
   display: flex;
-  gap: 20px; 
+  gap: 20px;
   justify-content: center;
   align-items: center;
   text-align: start;
-  width: 100%;
-  flex-wrap: wrap;
+  /* width: 100%; */
+  position: absolute;
+  flex-direction: column;
+  background: #00000082;
+  width: 70vw;
+  border-radius: 15px;
+}
+.formClose {
+position: absolute;
+right: 10px;
+top: 10px;
 }
 
 .formRow div {
@@ -164,6 +179,15 @@
   gap: 30px; 
   margin: 40px 50px 0px 50px; 
 }
+.carContainFormActive {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; 
+  gap: 30px; 
+  margin: 40px 50px 0px 50px; 
+  opacity: 3%;
+}
+
 
 .cardCar {
   display: flex;

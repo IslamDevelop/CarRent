@@ -11,41 +11,20 @@ import { auth, db } from "../../firebase";
 import { rent } from "../../hooks/rent";
 import { acceptOrder } from "../../hooks/acceptOrder";
 import { date } from "../../hooks/date";
+import { IAddCar, MyCarsForm } from "./MyCarsForm";
 
 
-export interface IAddCar {
-  carUid: string;
-  carPhoto: string;
-  carName: string;
-  carModel: string; 
-  carYear: number;
-  rentPrice: number;
-  carTransmission: string;
-  isRented: boolean;
-  carPhone: string
-  acceptOrder: boolean
-  dateAdd: string
-  rentDays: number
-}
+
 interface Icar {
   cars: IAddCar[]
 }
 
 export const MyCars: React.FC = () => {
   const [cars, setCars] = useState<Icar | []>([]);
-  const { register, handleSubmit } = useForm<IAddCar>();
+  const [activeForm,setActiveForm] = useState(false)
+
   const [isauth, setAuth] = useState(false);
-  const submit: SubmitHandler<IAddCar> = async (data) => {
-    try {
-      
-      data.dateAdd = date()
-      await addPhotoCar(data);
-      console.log(data.carPhoto);
-      console.log("Автомобиль добавлен успешно");
-    } catch (error) {
-      console.error("Ошибка при добавлении автомобиля:", error);
-    }
-  };
+  
   
   const dataBaseCars = ref(db, `/Cars`);
   useEffect(() => {
@@ -65,7 +44,9 @@ export const MyCars: React.FC = () => {
   }, []);
 
 
-
+  const formActivate = () => {
+    setActiveForm(!activeForm)
+  }
 
 
 
@@ -73,51 +54,15 @@ export const MyCars: React.FC = () => {
     <div className={style.MyCars}>
   <div className={style.contain}>
       {!isauth ? <h2>Тут может быть ТВОЯ МАШЫЫНА</h2> : 
-      <div>
-
-    <form className={style.formMyCars} onSubmit={handleSubmit(submit)}>
-      <div className={style.formRow}>
-        <div>
-          <label className={style.fileLabel} htmlFor="carPhoto">Фото автомобиля</label>
-          <input type="file" id="carPhoto" {...register('carPhoto')} />
-        </div>
-        <div>
-          <label htmlFor="carName"></label>
-          <input type="text" id="carName" placeholder="Марка автомобиля" {...register('carName', { required: true })} />
-        </div>
-        <div>
-          <label htmlFor="carModel"></label>
-          <input type="text" id="carModel" placeholder="Модель автомобиля"{...register('carModel', { required: true })} />
-        </div>
-        <div>
-          <label htmlFor="carYear"></label>
-          <input type="number" id="carYear" placeholder="Год выпуска"{...register('carYear', { required: true })} />
-        </div>
-        <div>
-          <label htmlFor="carTransmission"></label>
-          <select id="carTransmission" {...register('carTransmission')}>
-            <option value="Не известно">Коробка передач</option>
-            <option value="AT">AT</option>
-            <option value="MT">MT</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="rentDays"></label>
-          <select id="rentDays" {...register('rentDays')}>
-            <option value="1">1 день</option>
-            <option value="2">2 дня</option>
-            <option value="3">3 дня</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="rentPrice"></label>
-          <input type="number" id="rentPrice" placeholder="Цена в сутки"{...register('rentPrice', { required: true })} />
-        </div>
-        <button className={style.BtnFormaMyCars} type="submit">Добавить</button>
+      <div className={style.buttonAndCardContain}>
+    {!activeForm ? <button onClick={() => {
+        formActivate()
+      }} className={style.BtnCardContain}>Добавить автомобиль</button>
+      : <MyCarsForm formActivate={formActivate}/>}
+    <div>
       </div>
-    </form>
 
-    <div className={style.carContain}>
+    <div className={!activeForm ? style.carContain : style.carContainFormActive}>
       {cars.map((item,index) => {
         if (item.carUid === auth.currentUser.uid) {
           return (

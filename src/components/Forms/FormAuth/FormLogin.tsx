@@ -34,7 +34,7 @@ export const FormLogin = () => {
   const database = ref(db, `/authUsers/usersAuth`);
 
 
-  const { register, handleSubmit } = useForm<LogForm>();
+  const { register, handleSubmit,formState: {errors,isSubmitting} } = useForm<LogForm>({mode: "onBlur"});
 
  
   const userAuth: UserAuth | null = JSON.parse(localStorage.getItem('userAuth') || 'null');
@@ -87,10 +87,13 @@ export const FormLogin = () => {
             <div className={styles.inputs}>
               <label htmlFor="email"></label>
               <input
-                type="text"
-                {...register('email', { required: true })}
-                placeholder="Email"
-              />
+                    {...register('email', { required: true,  pattern: {
+                      value: /^\S+@\S+$/i,
+                      message: "Некорректный email",
+                    },})}
+                    placeholder="Email"
+                  /> 
+                  {errors.email && <span>{errors.email.message}</span>}
               <img src={userIcon} alt="User Icon" />
             </div>
 
@@ -105,7 +108,7 @@ export const FormLogin = () => {
             </div>
 
             <div>
-              <button className={styles.btnLogin}>Login</button>
+              {isSubmitting ? <button type='button' className={styles.btnLogin}>Loading...</button> : <button className={styles.btnLogin}>Login</button>}
             </div>
           </form>
 
