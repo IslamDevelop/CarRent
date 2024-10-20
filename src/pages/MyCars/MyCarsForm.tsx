@@ -3,9 +3,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import style from "./myCars.module.css";
 import { date } from '../../hooks/date';
 import { addPhotoCar } from '../../server/addCarDatabase/addCarPhoto';
+import { auth } from '../../firebase';
 
 export interface IAddCar {
     carUid: string;
+    carUser: string | null;
     carPhoto: string;
     carName: string;
     carModel: string; 
@@ -20,11 +22,11 @@ export interface IAddCar {
   }
 
 export const MyCarsForm = ({formActivate}) => {
-    const { register, handleSubmit,formState: {errors,isSubmitting,isSubmitSuccessful},reset } = useForm<IAddCar>({mode: "onSubmit"});
+    const { register, handleSubmit,formState: {errors,isSubmitting},reset } = useForm<IAddCar>({mode: "onSubmit"});
 
     const submit: SubmitHandler<IAddCar> = async (data) => {
         try {
-          
+          data.carUser = auth.currentUser.email
           data.dateAdd = date()
           await addPhotoCar(data);
           console.log(data.carPhoto);

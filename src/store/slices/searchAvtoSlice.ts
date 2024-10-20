@@ -4,6 +4,8 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 interface Car {
     carName: string;
     carModel:string;
+    carUser: string | null;
+    dateAdd: string;
     carPhoto: string;
     carYear: number;
     carTransmission: string;

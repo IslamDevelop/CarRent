@@ -16,9 +16,10 @@ import salon from '../../assets/SearchCars/Salon.jpg'
 export const SearchAuto = () => {
   const cars = useSelector((state: RootState) => state.searchCar.cars);
   const [filteredCars, setFilteredCars] = useState(cars); // Состояние для отфильтрованных автомобилей
+  const [isauth, setAuth] = useState(false);
+
   const dispatch = useDispatch();
 
-  const [isauth, setAuth] = useState(false);
   const dataBaseCars = ref(db, `/Cars`);
   useEffect(() => {
     onValue(dataBaseCars, (snapshot) => {
@@ -105,7 +106,7 @@ export const SearchAuto = () => {
                   <p className={style.carPrice}>{item.rentPrice}&#8381; в сутки</p>
                 </div>
                  
-                 
+                <span>добавлено пользователем {item.carUser} {item.dateAdd}</span>
                 </div>
 
                 <div className={style.CardRightButton}>
