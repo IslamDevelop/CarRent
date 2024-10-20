@@ -1,6 +1,7 @@
 import React from 'react'
 import lamba from '../../assets/AboutImage/Dodge.jpg'
 import styles from './AboutUs.module.css'
+import { Footer } from '../../components/Footer/Footer'
 
 
 export const AboutUs = () => {
@@ -35,7 +36,7 @@ export const AboutUs = () => {
       </div>
 
     </div>
-
+    <Footer/>
     </div>
     
   )

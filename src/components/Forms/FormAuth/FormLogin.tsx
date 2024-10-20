@@ -111,7 +111,7 @@ export const FormLogin = () => {
                     },})}
                     placeholder="Email"
                   /> 
-                  {errors.email && <span style={{ color: "red" }}>{errors.email.message}</span>}
+                  {errors.email && <span style={{ color: "rgb(143, 14, 19)" }}>{errors.email.message}</span>}
               <img src={userIcon} alt="User Icon" />
             </div>
 
