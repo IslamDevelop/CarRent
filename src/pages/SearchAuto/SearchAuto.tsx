@@ -91,6 +91,7 @@ export const SearchAuto = () => {
             <p>7h 0m</p>
           </div>
         </div>
+<div>
 
         {filteredCars.map((item, index) => {
           return (
@@ -113,12 +114,12 @@ export const SearchAuto = () => {
                 {isauth ? (
                   item.isRented == false ? (
                     <button
-                      className={style.BtnCardContain}
-                      onClick={() => {
-                        rent(index, item.carName)
-                        localStorage.setItem('orderUid',item.carName + index)
-                        localStorage.setItem('carUid',item.carUid)
-                      }}
+                    className={style.BtnCardContain}
+                    onClick={() => {
+                      rent(index, item.carName)
+                      localStorage.setItem('orderUid',item.carName + index)
+                      localStorage.setItem('carUid',item.carUid)
+                    }}
                     >
                       Арендовать
                     </button>
@@ -134,6 +135,7 @@ export const SearchAuto = () => {
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );
