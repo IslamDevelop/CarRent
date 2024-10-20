@@ -25,7 +25,6 @@ function App() {
     <>
       <Header />
       {isauth ? <Routing /> : <AuthPage/>}
-      <Footer />
     </>
   );
 }

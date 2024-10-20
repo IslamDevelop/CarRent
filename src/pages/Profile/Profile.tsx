@@ -9,6 +9,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import addProfile from "../../server/addProfile/addProfile";
 import { onValue, ref } from "firebase/database";
 import addPhoto from "../../server/addProfile/addPhoto";
+import { Footer } from "../../components/Footer/Footer";
+import ava from '../../assets/Profile/Avatar.png'
 
 interface FormData {
   name: string;
@@ -71,7 +73,7 @@ export const Profile = () => {
             {profile && profile.profilePhoto ? (
               <img src={profile.profilePhoto} alt=""/>
             ) : (
-              <img src={avatar} alt="Аватар по умолчанию" />
+              <img src={ ava } alt="Аватар по умолчанию" />
             )}
           </div>
           <div className={style.nameLabel}>
@@ -148,6 +150,7 @@ export const Profile = () => {
 
         </form>
       </div>
+      <Footer/>
     </div>
   );
 };

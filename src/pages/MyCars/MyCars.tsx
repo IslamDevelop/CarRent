@@ -12,6 +12,7 @@ import { rent } from "../../hooks/rent";
 import { acceptOrder } from "../../hooks/acceptOrder";
 import { date } from "../../hooks/date";
 import { IAddCar, MyCarsForm } from "./MyCarsForm";
+import { Footer } from "../../components/Footer/Footer";
 
 
 
@@ -96,6 +97,7 @@ export const MyCars: React.FC = () => {
       </div>
     }
   </div>
+  <Footer/>
 </div>
   );
 };
