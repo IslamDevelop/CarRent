@@ -28,7 +28,7 @@
     align-items: center;
     border-radius: 20px;
     backdrop-filter: blur(1px);
-    box-shadow: 0 0 5px black;
+    box-shadow: 0 0 10px black;
     position: relative;
     background: repeating-conic-gradient(from var(--a), #fec195 0%, #fec195 5%, transparent 5%, transparent 40%, #fec195 50%);
     animation: animate 12s linear infinite;
@@ -87,7 +87,7 @@
     background: transparent;
     border: inherit;
     color: white;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(44, 44, 44);
 }
 .authFormRight input:focus {
     border-bottom: 1px solid #fec195;

@@ -6,6 +6,8 @@ import { Routing } from "./Routing/Routing";
 import { AuthPage } from "./pages/AuthPage/AuthPage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
+import { Footer } from "./components/Footer/Footer";
+
 
 function App() {
   const [isauth, setAuth] = useState(false);
@@ -23,6 +25,7 @@ function App() {
     <>
       <Header />
       {isauth ? <Routing /> : <AuthPage/>}
+      <Footer />
     </>
   );
 }

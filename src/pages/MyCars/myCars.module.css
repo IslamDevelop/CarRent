@@ -73,6 +73,13 @@ top: 10px;
 .formMyCars select:focus {
   border-color: #e9b57a;
   outline: none;
+  box-shadow: 0 0 5px #e9b57a;
+}
+
+.formMyCars input[type="text"]:hover,
+.formMyCars input[type="number"]:hover,
+.formMyCars select:hover {
+  border: 1px solid #e9b57a;
 }
 
 .formMyCars select {
@@ -118,7 +125,7 @@ top: 10px;
   margin-top: 8px;
   width: 16px;
   height: 16px;
-  border: 2px solid #FE8400;
+  border: 2px solid #e9b57a;
   border-radius: 4px;
   background-color: transparent;
   cursor: pointer;
@@ -127,7 +134,7 @@ top: 10px;
 }
 
 .checkboxContainer input[type="checkbox"]:checked {
-  background-color: #FE8400;
+  background-color: #e9b57a;
 }
 
 .checkboxContainer input[type="checkbox"]:checked::after {
@@ -143,8 +150,8 @@ top: 10px;
 }
 
 .checkboxContainer input[type="checkbox"]:hover {
-  border-color: #ff9900;
-  background-color: #ff9d34;
+  border-color: #e9b57a;
+  background-color: #e9b57a;
 }
 
 .formMyCars input[type="file"] {
@@ -168,7 +175,7 @@ top: 10px;
 }
 
 .fileLabel:hover {
-  background-color: #e9b57a;
+  background-color: #929292;
 }
 
 
@@ -195,7 +202,7 @@ top: 10px;
   width: 320px; 
   border-radius: 10px;
   background-color: #1f1f1f;
-  padding: 15px;
+  padding: 25px;
 }
 
 .cardLeft {
@@ -210,10 +217,11 @@ top: 10px;
 
 .carModel {
   font-size: 17px;
-  color: #fff;
+  color: #d2d2d2;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-top: 12px;
+  margin-bottom: 3px;
 }
 
 .carPrice {
@@ -224,6 +232,7 @@ top: 10px;
   padding: 4px 6px;
   width: max-content;
   border-radius: 4px;
+  margin: 10px 0px;
 }
 
 .carImage {
@@ -247,7 +256,7 @@ top: 10px;
   font-weight: 600;
   letter-spacing: 1px;
   margin: 4px 0;
-  color: #fff;
+  color: #d2d2d2;
 }
 
 .BtnCardContain {
@@ -271,9 +280,9 @@ top: 10px;
   height: 100%;
   width: 0;
   border-radius: 7px;
-  background-color: #ffffff;
+  background-color: #7b7b7b;
   z-index: -1;
-  transition: all 0.7s;
+  transition: all 0.5s;
 }
 .BtnCardContain:hover::before {
   width: 100%;
