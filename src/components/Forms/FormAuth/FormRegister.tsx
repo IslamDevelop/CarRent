@@ -86,13 +86,13 @@ useEffect(() => {
                     },})}
                     placeholder="Email"
                   /> 
-                  {errors.email && <span>{errors.email.message}</span>}
+                  {errors.email && <span style={{ color: "red" }}>{errors.email.message}</span>}
         <img src={ sobachka } />
       </div>
       <div className={styles.inputs}>
         <label htmlFor="phone"></label>
         <input type="number" {...register('phone', {required: true, minLength: {value: 10, message: "Минимум 10 символов"}})} placeholder='Phone'/>
-        {errors.phone && <span>{errors.phone.message}</span>}
+        {errors.phone && <span style={{ color: "red" }}>{errors.phone.message}</span>}
         <img src={ phone } />
       </div>
 

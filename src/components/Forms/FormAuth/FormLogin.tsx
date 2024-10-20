@@ -28,7 +28,7 @@ export const FormLogin = () => {
 
   const [users, setUsers] = useState<UserAuth[]>([]);
   const [data, setData] = useState<LogForm | null>(null);
-
+  const [error, setError] = useState("");
 
   const navigate = useNavigate()
   const database = ref(db, `/authUsers/usersAuth`);
@@ -54,9 +54,27 @@ export const FormLogin = () => {
     const password: string = formData.password.trim();
     console.log(email)
     console.log(password)
-    await signInWithEmailAndPassword(auth, email, password);
+     try {
+
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error: any) {
+      
+      switch (error.code) {
+        case "auth/wrong-password":
+          setError("Неправильный пароль. Пожалуйста, попробуйте снова.");
+          break;
+        case "auth/user-not-found":
+          setError("Пользователь с таким email не найден.");
+          break;
+        case "auth/too-many-requests":
+          setError("Слишком много неудачных попыток входа. Попробуйте позже.");
+          break;
+        default:
+          setError("Неправильный пароль или email.");
+          break;
+      }
     
-  };
+  }};
 
  
 
@@ -93,7 +111,7 @@ export const FormLogin = () => {
                     },})}
                     placeholder="Email"
                   /> 
-                  {errors.email && <span>{errors.email.message}</span>}
+                  {errors.email && <span style={{ color: "red" }}>{errors.email.message}</span>}
               <img src={userIcon} alt="User Icon" />
             </div>
 
@@ -111,7 +129,7 @@ export const FormLogin = () => {
               {isSubmitting ? <button type='button' className={styles.btnLogin}>Loading...</button> : <button className={styles.btnLogin}>Login</button>}
             </div>
           </form>
-
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <p>
             Don't have an account?
             <Link to='/Register'> Sign Up</Link>
