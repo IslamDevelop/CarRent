@@ -23,8 +23,13 @@ interface FormData {
 }
 
 export const Profile = () => {
-  const [profile, setProfile] = useState<FormData | null>(null); // Измените тип на FormData | null
-  const { register, handleSubmit, setValue } = useForm<FormData>();
+  const [profile, setProfile] = useState<FormData | null>(null);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<FormData>();
 
   const submit: SubmitHandler<FormData> = async (data) => {
     try {
@@ -36,7 +41,6 @@ export const Profile = () => {
 
       await addProfile(data); // Обновляем профиль
     } catch (error) {
-      console.error("Ошибка при добавлении профиля:", error);
       console.error("Ошибка при добавлении профиля:", error);
     }
   };
@@ -58,6 +62,8 @@ export const Profile = () => {
     return () => unsubscribe(); // Очистите слушатель
   }, [setValue]);
 
+  console.log(profile);
+
   return (
     <div className="container">
       <form onSubmit={handleSubmit(submit)} className={style.profile}>
@@ -66,7 +72,7 @@ export const Profile = () => {
         <div className={style.info}>
           <div className={style.avatar}>
             {profile && profile.profilePhoto ? (
-              <img src={profile.profilePhoto} alt="Аватар" />
+              <img src={profile.profilePhoto} alt=""/>
             ) : (
               <img src={avatar} alt="Аватар по умолчанию" />
             )}
@@ -90,67 +96,105 @@ export const Profile = () => {
             <input
               type="text"
               placeholder="Имя"
-              {...register("name", { required: true })}
-              defaultValue={profile?.name} // Используем опциональную цепочку
+              {...register("name", {
+                required: "Имя обязательно",
+                maxLength: { value: 20, message: "Максимум 20 символов" },
+              })}
+              defaultValue={profile?.name}
             />
+            {errors.name && <span >{errors.name.message}</span>}
           </label>
           <label className={style.label}>
             <input
               type="text"
               placeholder="Фамилия"
-              {...register("surname", { required: true })}
+              {...register("surname", { required: "Фамилия обязательна" })}
               defaultValue={profile?.surname}
             />
+            {errors.surname && <span>{errors.surname.message}</span>}
           </label>
           <label className={style.label}>
             <input
               type="date"
-              {...register("birthDate", { required: true })}
+              {...register("birthDate", {
+                required: "Дата рождения обязательна",
+              })}
               defaultValue={profile?.birthDate}
             />
+            {errors.birthDate && <span>{errors.birthDate.message}</span>}
           </label>
         </div>
         <div className={style.personal}>
           <h2>Дополнительная Информация</h2>
           <label className={style.label}>
             <input
-              type="number"
+              type="tel" // Используйте tel для телефонных номеров
               placeholder="Телефон"
-              {...register("phone", { required: true })}
+              {...register("phone", {
+                required: "Телефон обязателен",
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Допустимы только цифры",
+                },
+              })}
               defaultValue={profile?.phone}
             />
+            {errors.phone && <span>{errors.phone.message}</span>}
           </label>
           <label className={style.label}>
             <input
               type="email"
               placeholder="E-mail"
-              {...register("email", { required: true })}
+              {...register("email", {
+                required: "E-mail обязателен",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Некорректный E-mail",
+                },
+              })}
               defaultValue={profile?.email}
             />
+            {errors.email && <span>{errors.email.message}</span>}
           </label>
           <label className={style.label}>
             <input
               type="number"
               placeholder="Водительский стаж"
-              {...register("drivingExperience", { required: true })}
-              defaultValue={profile?.drivingExperience}
+              {...register("drivingExperience", {
+                required: "Стаж обязателен",
+                min: { value: 0, message: "Стаж не может быть отрицательным" },
+              })}
+              defaultValue={profile?.drivingExperience  +  "лет"}
             />
+            {errors.drivingExperience && (
+              <span>{errors.drivingExperience.message}</span>
+            )}
           </label>
           <label className={style.label}>
             <input
               type="text"
               placeholder="Гражданство"
-              {...register("citizenship", { required: true })}
+              {...register("citizenship", {
+                required: "Гражданство обязательно",
+              })}
               defaultValue={profile?.citizenship}
             />
+            {errors.citizenship && <span>{errors.citizenship.message}</span>}
           </label>
           <label className={style.label}>
             <input
               type="number"
               placeholder="ИНН"
-              {...register("inn", { required: true })}
+              {...register("inn", {
+                required: "ИНН обязателен",
+                minLength: {
+                  value: 10,
+                  message: "ИНН должен содержать минимум 10 символов",
+                },
+              })}
               defaultValue={profile?.inn}
             />
+            {errors.inn && <span>{errors.inn.message}</span>}
           </label>
         </div>
         <Button variant="">Редактировать</Button>
