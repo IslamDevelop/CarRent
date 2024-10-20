@@ -93,6 +93,10 @@
     border-bottom: 1px solid #fec195;
 }
 
+.inputs span{
+    color: black;
+}
+
 .authFormRight img {
     position: absolute;
     width: 17px;
