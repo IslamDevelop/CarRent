@@ -5,7 +5,7 @@ import huracanLight from '../../assets/HomeImage/Huracan Light.jpg';
 import aventador from '../../assets/HomeImage/Aventador.jpg';
 import mclaren from '../../assets/HomeImage/McLaren.jpg';
 import labmorghini from '../../assets/HomeImage/Merc4.jpg';
-import RR from '../../assets/HomeImage/RR.jpg';
+import GT from '../../assets/HomeImage/GT S.jpg';
 
 export const Home = () => {
 
@@ -13,7 +13,7 @@ export const Home = () => {
   const items = [
     { src: labmorghini, title: 'The Perfect Road Trip', text: 'A sleek convertible roars to life as the driver hits the gas, ready for adventure. The open road stretches ahead, lined with scenic views and endless possibilities.' },
     { src: aventador, title: 'Choosing the Right Rental Car', text: 'Customers browse through a variety of cars, from compact sedans to spacious SUVs, at the rental desk. Friendly staff provide recommendations based on budget and travel needs.' },
-    { src: huracanLight, title: 'Exploring the City', text: 'A stylish hatchback glides through bustling city streets, navigating traffic with ease. The driver stops at popular landmarks, capturing moments with quick photos. ' },
+    { src: GT, title: 'Exploring the City', text: 'A stylish hatchback glides through bustling city streets, navigating traffic with ease. The driver stops at popular landmarks, capturing moments with quick photos. ' },
     { src: mclaren, title: 'Driving Through Nature', text: 'An all-terrain vehicle tackles rugged trails, showcasing its power and versatility in the wild. Passengers enjoy breathtaking views of mountains and forests as they cruise along winding paths.' },
     { src: huracanLight, title: 'Returning the Rental Car', text: 'As the sun sets, the driver pulls into the rental agency, the day’s adventures fresh in their mind. They fill out the return paperwork while the staff inspects the vehicle for any damages.' },
   ];

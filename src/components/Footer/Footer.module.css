@@ -1,6 +1,6 @@
 .footer {
   backdrop-filter: blur(2px);
-  box-shadow: 0 0 15px rgba(33, 33, 33, 0.3);
+  box-shadow: 0 0 20px rgb(0, 0, 0);
   color: #a9a9a9;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -10,18 +10,6 @@
   position: absolute;
   bottom: 0;
   animation: pulseShadow 3s infinite;
-}
-
-@keyframes pulseShadow {
-  0% {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  50% {
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-  }
-  100% {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
 }
   
   .section {
