@@ -12,6 +12,7 @@ import { rent } from "../../hooks/rent";
 import { acceptOrder } from "../../hooks/acceptOrder";
 import { date } from "../../hooks/date";
 import { IAddCar, MyCarsForm } from "./MyCarsForm";
+import { Footer } from "../../components/Footer/Footer";
 
 
 
@@ -53,7 +54,7 @@ export const MyCars: React.FC = () => {
   return (
     <div className={style.MyCars}>
   <div className={style.contain}>
-      {!isauth ? <h2>Тут может быть ТВОЯ МАШЫЫНА</h2> : 
+      {!isauth ? <h2>Зарегистрируйтесь для действий</h2> : 
       <div className={style.buttonAndCardContain}>
     {!activeForm ? <button onClick={() => {
         formActivate()
@@ -96,6 +97,7 @@ export const MyCars: React.FC = () => {
       </div>
     }
   </div>
+  <Footer/>
 </div>
   );
 };

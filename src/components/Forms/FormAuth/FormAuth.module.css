@@ -93,6 +93,10 @@
     border-bottom: 1px solid #fec195;
 }
 
+.inputs span{
+    color: black;
+}
+
 .authFormRight img {
     position: absolute;
     width: 17px;
@@ -135,6 +139,7 @@
     padding: 50px;
     border-radius: 15px;
 }
+
 .formContain div {
     display: flex;
     flex-direction: column;
@@ -151,6 +156,7 @@
 .inputs {
     position: relative;
 }
+
 .formContain img {
     position: absolute;
     right: 0;
@@ -219,9 +225,10 @@
 .authFormRegistr .formContain {
     display: flex;
     justify-content: center;
-    height: 280px;
+    height: 250px;
     margin-right: 110px;
     margin-bottom: 30px;
+    padding-top: 70px;
 }
 .authFormRegistr form button {
     color: black;

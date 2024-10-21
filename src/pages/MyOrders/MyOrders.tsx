@@ -4,6 +4,7 @@ import { auth, db } from '../../firebase'
 import { rent } from '../../hooks/rent'
 import style from './MyOrders.module.css'
 import { IAddCar } from '../MyCars/MyCars'
+import { Footer } from '../../components/Footer/Footer'
 
 
 

@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   top: 0;
-  height: 100vh; 
+  height: 110vh; 
   width: 100%;
   background-color: rgb(18, 18, 18);
   background: linear-gradient(90deg, #131313 50%, #000000 50%);
@@ -21,7 +21,7 @@
   backdrop-filter: blur(2px);
   box-shadow: 0 0 25px rgb(49, 49, 49);
   background: linear-gradient(90deg, #131313 50%, #000000 50%);
-  margin-top: 150px;
+  margin-top: 130px;
 }
 
 form h4 {
@@ -35,7 +35,7 @@ form h4 {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #ffffff;
   overflow: hidden;
   position: relative;
 }
@@ -49,7 +49,7 @@ form h4 {
 .avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .nameLabel p {
@@ -57,7 +57,8 @@ form h4 {
   font-weight: bold;
   color: #bdbdbd;
   text-align: center;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .personal {

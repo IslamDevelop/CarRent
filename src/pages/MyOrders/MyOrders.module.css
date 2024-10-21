@@ -10,8 +10,9 @@
 .OrdersContain {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
   padding: 30px;
+  border-bottom: 2px dashed;
 }
 
 .title {
@@ -72,7 +73,7 @@
 
 .orderCardsRight {
   width: 350px;
-  padding: 35px;
+  padding: 20px;
   border: 1px solid #e9b57a;
   background-color: #1f1f1f;
   backdrop-filter: blur(2px);

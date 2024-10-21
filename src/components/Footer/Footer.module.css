@@ -1,15 +1,28 @@
 .footer {
-    background-color: rgb(22, 22, 22);
-    backdrop-filter: blur(2px);
-    color: #a9a9a9;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 40px;
-    gap: 20px;
-    text-align: left;
-    position: absolute;
-    bottom: 0;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 15px rgba(33, 33, 33, 0.3);
+  color: #a9a9a9;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 28px;
+  gap: 20px;
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+  animation: pulseShadow 3s infinite;
+}
+
+@keyframes pulseShadow {
+  0% {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
+  50% {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  }
+  100% {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+}
   
   .section {
     margin-bottom: 20px;
@@ -18,14 +31,14 @@
   }
   
   .section h3 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
     color: #daa96e; 
   }
   
   .section p,
   .section ul {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.6;
     margin: 0;
   }
@@ -41,6 +54,7 @@
   
   .socials li a {
     color: #a9a9a9;
+    font-size: 16px;
     text-decoration: none;
     transition: color 0.3s;
   }
@@ -62,6 +76,7 @@
   .section ul li a {
     color: #a9a9a9;
     text-decoration: none;
+    font-size: 16px;
     transition: color 0.3s;
   }
   
