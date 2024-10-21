@@ -115,7 +115,6 @@ console.log(orders)
       })
     }</div>
   }
-      <Footer/>
   </div>
   )
 }

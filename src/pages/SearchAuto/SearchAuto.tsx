@@ -15,7 +15,7 @@ import salon from '../../assets/SearchCars/Salon.jpg'
 
 export const SearchAuto = () => {
   const cars = useSelector((state: RootState) => state.searchCar.cars);
-  const [filteredCars, setFilteredCars] = useState(cars); // Состояние для отфильтрованных автомобилей
+  const [filteredCars, setFilteredCars] = useState(cars); 
   const [isauth, setAuth] = useState(false);
 
   const dispatch = useDispatch();

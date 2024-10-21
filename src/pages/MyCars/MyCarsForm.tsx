@@ -41,7 +41,6 @@ export const MyCarsForm = ({formActivate}) => {
       <div>
         <form className={style.formMyCars} onSubmit={handleSubmit(submit)}>
       <div className={style.formRow}>
-        <button className={style.formClose} type='button' onClick={() => formActivate()}>X</button>
         <div>
           <label className={style.fileLabel} htmlFor="carPhoto">Фото автомобиля</label>
           <input type="file" id="carPhoto" {...register('carPhoto')} />
@@ -80,7 +79,10 @@ export const MyCarsForm = ({formActivate}) => {
           <input type="number" id="rentPrice" placeholder="Цена в сутки"{...register('rentPrice', { required: true })} />
           {errors.rentPrice && <span>Ты бесплатно собираешься отдать?</span>}
         </div>
+        <div className={style.modalBtn}>
         {isSubmitting ? <button className={style.BtnFormaMyCars} type="button">Отправка</button> : <button className={style.BtnFormaMyCars} type="submit">Добавить</button>}
+        <button className={style.formClose} type='button' onClick={() => formActivate()}>Отмена</button>
+        </div>
       </div>
     </form>
     </div>

@@ -142,7 +142,7 @@ export const Profile = () => {
 
           <div className={style.profileBtn}>
 
-             <Button variant="" onClick={() => setIsEditing(!isEditing)} // Переключаем режим редактирования
+             <Button variant="" onClick={() => setIsEditing(!isEditing)}
 >
              {isEditing ? "Save" : "Edit"}
              </Button>

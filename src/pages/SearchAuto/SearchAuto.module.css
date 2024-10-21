@@ -10,12 +10,10 @@
 .FindContainer {
     padding: 20px;
     display: flex;
-    /* flex-direction: column; */
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
     gap: 40px;
-    /* margin-top: 40px; */
     color: #fff;
     position: relative;
     height: 100%;
@@ -93,7 +91,7 @@
   border: 1px solid rgba(177, 177, 177, 0.3); 
   outline: none;
   transition: 0.6s ease;
-  width: 350px;
+  width: 170px;
 }
 
 .InputSearch input:hover {

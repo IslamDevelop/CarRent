@@ -111,7 +111,7 @@ export const FormLogin = () => {
                     },})}
                     placeholder="Email"
                   /> 
-                  {errors.email && <span style={{ color: "rgb(143, 14, 19)" }}>{errors.email.message}</span>}
+                  {errors.email && <span style={{ color: "rgb(143, 14, 19)", fontSize:'14px', position: 'absolute', bottom: '-23px' }}>{errors.email.message}</span>}
               <img src={userIcon} alt="User Icon" />
             </div>
 
@@ -129,7 +129,7 @@ export const FormLogin = () => {
               {isSubmitting ? <button type='button' className={styles.btnLogin}>Loading...</button> : <button className={styles.btnLogin}>Login</button>}
             </div>
           </form>
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p style={{ color: "rgb(143, 14, 19)" }}>{error}</p>}
           <p>
             Don't have an account?
             <Link to='/Register'> Sign Up</Link>

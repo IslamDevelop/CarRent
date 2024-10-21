@@ -54,7 +54,7 @@ export const MyCars: React.FC = () => {
   return (
     <div className={style.MyCars}>
   <div className={style.contain}>
-      {!isauth ? <h2>Тут может быть ТВОЯ МАШЫЫНА</h2> : 
+      {!isauth ? <h2>Зарегистрируйтесь для действий</h2> : 
       <div className={style.buttonAndCardContain}>
     {!activeForm ? <button onClick={() => {
         formActivate()
