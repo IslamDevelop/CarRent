@@ -41,44 +41,43 @@ export const MyCarsForm = ({formActivate}) => {
       <div>
         <form className={style.formMyCars} onSubmit={handleSubmit(submit)}>
       <div className={style.formRow}>
-        <div>
+        <div className={style.formAddbutton}>
           <label className={style.fileLabel} htmlFor="carPhoto">Фото автомобиля</label>
           <input type="file" id="carPhoto" {...register('carPhoto')} />
         </div>
-        <div>
+      
           <label htmlFor="carName"></label>
           <input type="text" id="carName" placeholder="Марка автомобиля" {...register('carName', { required: true })} />
           {errors.carName && <span>Вы не выбрали марку</span>}
-        </div>
-        <div>
+      
+       
           <label htmlFor="carModel"></label>
           <input type="text" id="carModel" placeholder="Модель автомобиля"{...register('carModel', { required: true })} />
-        </div>
-        <div>
+       
+       
           <label htmlFor="carYear"></label>
           <input type="number" id="carYear" placeholder="Год выпуска"{...register('carYear', { required: true })} />
-        </div>
-        <div>
+       
           <label htmlFor="carTransmission"></label>
           <select id="carTransmission" {...register('carTransmission')}>
             <option value="Не известно">Коробка передач</option>
             <option value="AT">AT</option>
             <option value="MT">MT</option>
           </select>
-        </div>
-        <div>
+        
+        
           <label htmlFor="rentDays"></label>
           <select id="rentDays" {...register('rentDays')}>
             <option value="1">1 день</option>
             <option value="2">2 дня</option>
             <option value="3">3 дня</option>
           </select>
-        </div>
-        <div>
+       
+       
           <label htmlFor="rentPrice"></label>
           <input type="number" id="rentPrice" placeholder="Цена в сутки"{...register('rentPrice', { required: true })} />
           {errors.rentPrice && <span>Ты бесплатно собираешься отдать?</span>}
-        </div>
+       
         <div className={style.modalBtn}>
         {isSubmitting ? <button className={style.BtnFormaMyCars} type="button">Отправка</button> : <button className={style.BtnFormaMyCars} type="submit">Добавить</button>}
         <button className={style.formClose} type='button' onClick={() => formActivate()}>Отмена</button>

@@ -31,14 +31,13 @@
 .formRow {
   display: flex;
   gap: 15px;
-  align-items: center;
   text-align: start;
   position: absolute;
   flex-direction: column;
   background: #15151582;
   box-shadow: 0 0 15px black;
-  width: 20vw;
-  padding: 40px;
+  width: 463px;
+  padding: 26px;
   border-radius: 15px;
 }
 .modalBtn {
@@ -63,13 +62,14 @@
   background-color: #777777;
 }
 
-
+.formAddbutton {
+  display: flex;
+  justify-content: center;
+}
 .formMyCars input[type="text"],
 .formMyCars input[type="number"],
 .formMyCars select {
-  width: 100%; 
-  max-width: 300px; 
-  padding: 10px; 
+  padding: 10px;
   font-size: 15px;
   margin-top: 5px;
   margin: 5px 0;
