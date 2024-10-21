@@ -9,8 +9,8 @@
 
 .OrdersContain {
   display: flex;
-  justify-content: space-between;
-  align-items: end;
+  justify-content: space-around;
+  align-items: center;
   padding: 30px;
   border-bottom: 2px dashed;
 }
@@ -43,17 +43,33 @@
   border-radius: 15px;
   background-color: #1f1f1f;
   margin-bottom: 50px;
+  border: 5px, #857233, solid;
+}
+.OrderCardCarsNone {
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #1f1f1f;
+  margin-bottom: 50px;
+  border: 5px #730000 solid;
+}
+.OrderCardCarsComplete {
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #1f1f1f;
+  margin-bottom: 50px;
+  border: 5px, #40bb64, solid;
 }
 
 .OrderCard{
   display: flex;
   gap: 50px;
   border-radius: 15px;
+  align-items: center;
 }
 .OrderCardInfo {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   color: antiquewhite;
 }
 .OrderCardInfo p {

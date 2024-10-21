@@ -53,7 +53,7 @@ console.log(orders)
         </div>
         <div className={style.OrdersContain}>
 
-      <div className={style.OrderCardCars}>
+      <div className={item.isRented == true ? item.acceptOrder == true ? style.OrderCardCarsComplete : style.OrderCardCars : style.OrderCardCarsNone}>
 
         <div className={style.OrderCard} key={item.carName + Math.random()}>
 
@@ -64,8 +64,8 @@ console.log(orders)
         <div className={style.OrderCardInfo}>
           <p> {item.carName} {item.carModel} {item.carYear} {item.carTransmission}</p>
          
-          <p>Left: 16h 25m</p>
-          <p>{item.isRented == true ? item.acceptOrder == true ? item.carPhone : false : "Ордер отменен"}</p>
+         
+          <p>{item.isRented == true ? item.acceptOrder == true ? item.carPhone : "Ожидание" : "Ордер отменен"}</p>
           
         </div>
           <button onClick={() => {remove()}}>Убрать ордер</button>
