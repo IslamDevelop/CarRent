@@ -12,14 +12,18 @@ import style from "./SearchAuto.module.css";
 import { useNavigate } from "react-router-dom";
 
 import salon from '../../assets/SearchCars/Salon.jpg'
+import { IAddCar } from "../MyCars/MyCarsForm";
+
+
 
 export const SearchAuto = () => {
   const cars = useSelector((state: RootState) => state.searchCar.cars);
   const [filteredCars, setFilteredCars] = useState(cars); 
   const [isauth, setAuth] = useState(false);
+  const [carInfo,SetInfo] = useState<IAddCar>()
 
   const dispatch = useDispatch();
-
+console.log(carInfo)
   const dataBaseCars = ref(db, `/Cars`);
   useEffect(() => {
     onValue(dataBaseCars, (snapshot) => {
@@ -71,31 +75,33 @@ export const SearchAuto = () => {
         <div className={style.sideCard}>
           <h2>Summary</h2>
           <div>
-            <h3>SERVICE TYPE</h3>
-            <p>Hourly</p>
+            <h3>Model</h3>
+            <p>{carInfo?.carName} {carInfo?.carModel}</p>
           </div>
           <div>
-            <h3>PICKUP LOCATION</h3>
-            <p>Russian, Moscow</p>
+            <h3>Year of manufacture</h3>
+            <p>{carInfo?.carYear}</p>
           </div>
           <div>
-            <h3>DROP OFF LOCATION</h3>
-            <p>Russian, Moscow</p>
+            <h3>Rent Price</h3>
+            <p>{carInfo?.rentPrice}</p>
           </div>
           <div>
             <h3>PICKUP DATE, TIME</h3>
-            <p>23-10-2024, 21:00</p>
+            <p>{carInfo?.dateAdd}</p>
           </div>
           <div className={style.lastDivSide}>
             <h3>TOTAL TIME</h3>
-            <p>7h 0m</p>
+            <p>{carInfo?.rentDays}</p>
           </div>
         </div>
 <div>
 
         {filteredCars.map((item, index) => {
           return (
-            <div key={item.carName + Math.random()} className={style.cardCar}>
+            <div onClick={() => {
+              SetInfo(item)
+            }} key={item.carName + Math.random()} className={style.cardCar}>
               <div className={style.cardLeft}>
                 <img src={item.carPhoto} alt="Car" className={style.carImage} />
               </div>

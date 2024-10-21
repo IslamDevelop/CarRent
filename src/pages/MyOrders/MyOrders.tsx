@@ -80,28 +80,23 @@ console.log(orders)
 
         <div className={style.orderCardsInfo}>
           <p>Time</p>
-          <p>1 day</p>
+          <p>{orders[0].rentDays} day</p>
         </div>
 
 
         <div className={style.orderCardsInfo}>
-          <p>Time left</p>
-          <p>16h 25m</p>
+          <p>Rent</p>
+          <p>{orders[0].carUser}</p>
         </div>
 
         <div className={style.orderCardsInfo}>
-          <p>Subtotal</p>
-          <p>4000р</p>
-        </div>
-
-        <div className={style.orderCardsInfo}>
-          <p>Estimated Shipping</p>
-          <p>From 0р</p>
+          <p>Accept</p>
+          <p>{orders[0].acceptOrder == true ? "Complete" : "Waiting"}</p>
         </div>
 
         <div className={style.orderCardsInfo}>
           <p>Estimated Total</p>
-          <p>4000р</p>
+          <p>{orders[0].rentPrice}</p>
         </div>
 
         <button>Checkout now</button>
