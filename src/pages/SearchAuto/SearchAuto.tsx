@@ -83,8 +83,8 @@ console.log(carInfo)
             <p>{carInfo?.carYear}</p>
           </div>
           <div>
-            <h3>Rent Price</h3>
-            <p>{carInfo?.rentPrice}</p>
+            <h3>Transmission</h3>
+            <p>{carInfo?.carTransmission}</p>
           </div>
           <div>
             <h3>PICKUP DATE, TIME</h3>
@@ -108,7 +108,7 @@ console.log(carInfo)
               <div className={style.cardRight}>
                 <div className={style.cardDetails}>
                 <div className={style.cardHeader}>
-                  <p>{item.carName} {item.carModel} {item.carYear} {item.carTransmission}</p>
+                  <p>{item.carName} {item.carModel} </p>
                   {/* <p className={style.carModel}>{item.carName} {item.carModel} {item.carYear}.г</p> */}
                   <p className={style.carPrice}>Price: {item.rentPrice}&#8381;</p>
                 </div>
