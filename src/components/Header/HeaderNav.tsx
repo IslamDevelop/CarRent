@@ -25,26 +25,28 @@ export const HeaderNav = () => {
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/Profile">Profile</Link>
-          </li>
+          
+            {isauth ? <li><Link to="/Profile">Profile</Link></li> : false}
+           
+         
           <li>
             <Link to="/SearchAuto">Cars</Link>
           </li>
-          <li>
-            <Link to="/MyCars">Add</Link>
-          </li>
-          <li>
-            <Link to="/MyOrders">Order</Link>
-          </li>
+       
+          {isauth ? <li><Link to="/MyCars">Add</Link></li> : false}
+          
+          {isauth ? <li><Link to="/MyOrders">Order</Link></li> : false}
           <li>
             <Link to="/AboutUs">About us</Link>
           </li>
         </ul>
         <div>
+         <ul>
+
           <Link to="/Login">
            {!isauth ?  <button>Login | Sign up</button> : <button onClick={() => signOut(auth)}>Sign out</button>} 
           </Link>
+         </ul>
         </div>
       </div>
     </div>

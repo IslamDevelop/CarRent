@@ -6,6 +6,7 @@ import { Home } from '../Home/Home'
 import { AboutUs } from '../AboutUs/AboutUs'
 import { SearchAuto } from '../SearchAuto/SearchAuto'
 import { MyCars } from '../MyCars/MyCars'
+import { Profile } from '../Profile/Profile'
 
 export const AuthPage = () => {
   return (
